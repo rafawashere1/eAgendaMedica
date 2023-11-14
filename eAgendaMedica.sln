@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgendaMedica.Domain", "eAgendaMedica.Domain\eAgendaMedica.Domain.csproj", "{51FA7CF5-ABFF-4772-BB48-02C462E877D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAgendaMedica.Domain", "eAgendaMedica.Domain\eAgendaMedica.Domain.csproj", "{51FA7CF5-ABFF-4772-BB48-02C462E877D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgendaMedica.Infra.Orm", "eAgendaMedica.Infra.Orm\eAgendaMedica.Infra.Orm.csproj", "{C8E08915-C4AE-49ED-B30C-84B352E48061}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAgendaMedica.Infra.Orm", "eAgendaMedica.Infra.Orm\eAgendaMedica.Infra.Orm.csproj", "{C8E08915-C4AE-49ED-B30C-84B352E48061}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Distribution", "2 - Distribution", "{F409AAF7-1433-44AB-85F0-566F5606C6B8}"
 EndProject
@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infra", "5 - Infra", "{97881F81-46CB-4FF1-8F15-F581E20755BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgendaMedica.Application", "eAgendaMedica.Application\eAgendaMedica.Application.csproj", "{A256DE8A-3B8F-4FDE-8120-BE2694F89B72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAgendaMedica.Application", "eAgendaMedica.Application\eAgendaMedica.Application.csproj", "{A256DE8A-3B8F-4FDE-8120-BE2694F89B72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgendaMedica.WebApi", "eAgendaMedica.WebApi\eAgendaMedica.WebApi.csproj", "{3E4B7B0D-56D9-4E89-991E-E3D52096B3AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAgendaMedica.WebApi", "eAgendaMedica.WebApi\eAgendaMedica.WebApi.csproj", "{3E4B7B0D-56D9-4E89-991E-E3D52096B3AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{78666F81-2F68-433D-A955-966E4D06812E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgendaMedica.ConsoleApp", "eAgendaMedica.ConsoleApp\eAgendaMedica.ConsoleApp.csproj", "{D3EB34A4-120D-4CC2-927F-58A4A14EA037}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAgendaMedica.ConsoleApp", "eAgendaMedica.ConsoleApp\eAgendaMedica.ConsoleApp.csproj", "{D3EB34A4-120D-4CC2-927F-58A4A14EA037}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

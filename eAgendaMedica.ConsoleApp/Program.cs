@@ -1,19 +1,21 @@
-﻿using eAgendaMedica.Domain.DoctorModule;
+﻿using eAgendaMedica.Application.DoctorModule;
+using eAgendaMedica.Domain.DoctorModule;
 using eAgendaMedica.Infra.Orm.DoctorModule;
 using eAgendaMedica.Infra.Orm.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 
 namespace eAgendaMedica.ConsoleApp
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Doctor doctor = new Doctor
             {
-                CRM = "12345-SP",
-                Name = "Dr. Exemplo",
+                CRM = "12347-SP",
+                Name = "Dr. Exemplo2",
                 LastActivity = DateTime.Now.AddDays(-1),
                 CurrentActivity = new Domain.ActivityModule.Activity(),
                 CurrentActivityId = Guid.NewGuid()
@@ -33,9 +35,13 @@ namespace eAgendaMedica.ConsoleApp
             var dbContext = new eAgendaMedicaDbContext(optionsBuilder.Options);
 
             var doctorRepository = new DoctorRepositoryOrm(dbContext);
-            doctorRepository.AddAsync(doctor);
 
-            dbContext.Doctors.Add(doctor);
+            var doctorService = new DoctorAppService(doctorRepository, dbContext);
+
+            doctorService.AddAsync(doctor);
+
+            await Task.Delay(2000);
+
             dbContext.SaveChanges();
         }
     }
