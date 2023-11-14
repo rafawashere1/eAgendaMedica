@@ -6,12 +6,10 @@ namespace eAgendaMedica.Domain.DoctorModule
     public class Doctor : Entity
     {
         public string CRM { get; set; }
-
         public string Name { get; set; }
-
         public DateTime LastActivity { get; set; }
-
-        public Activity? Activity { get; set; }
+        public Activity CurrentActivity { get; set; }
+        public Guid CurrentActivityId { get; set; }
 
         public Doctor()
         {
@@ -20,7 +18,7 @@ namespace eAgendaMedica.Domain.DoctorModule
 
         public bool CanDoActivity()
         {
-            TimeSpan cooldown = Activity.TypeActivity == TypeActivity.Surgery ? TimeSpan.FromHours(4) : TimeSpan.FromMinutes(20);
+            TimeSpan cooldown = CurrentActivity.Type == TypeActivity.Surgery ? TimeSpan.FromHours(4) : TimeSpan.FromMinutes(20);
 
             TimeSpan difference = DateTime.Now - LastActivity;
 
