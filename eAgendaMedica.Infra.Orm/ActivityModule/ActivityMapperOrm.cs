@@ -1,6 +1,30 @@
-﻿namespace eAgendaMedica.Infra.Orm.ActivityModule
+﻿using eAgendaMedica.Domain.ActivityModule;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace eAgendaMedica.Infra.Orm.ActivityModule
 {
-    public class ActivityMapperOrm
+    public class ActivityMapperOrm : IEntityTypeConfiguration<Activity>
     {
+        public void Configure(EntityTypeBuilder<Activity> builder)
+        {
+            builder.ToTable("TBActivity");
+
+            builder.Property(x => x.Id)
+                .ValueGeneratedNever();
+
+            builder.Property(x => x.Type)
+            .HasConversion<int>()
+                .IsRequired();
+
+            builder.Property(x => x.StartTime)
+                .IsRequired();
+
+            builder.Property(x => x.EndTime)
+                .IsRequired();
+
+            builder.HasMany(a => a.Doctors)
+                .WithMany();
+        }
     }
 }

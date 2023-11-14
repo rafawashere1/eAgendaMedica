@@ -1,5 +1,7 @@
 ﻿using eAgendaMedica.Domain.ActivityModule;
 using eAgendaMedica.Domain.DoctorModule;
+using eAgendaMedica.Infra.Orm.ActivityModule;
+using eAgendaMedica.Infra.Orm.DoctorModule;
 using Microsoft.EntityFrameworkCore;
 
 namespace eAgendaMedica.Infra.Orm.Shared
@@ -16,49 +18,9 @@ namespace eAgendaMedica.Infra.Orm.Shared
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Doctor>(builder =>
-            {
-                builder.ToTable("TBDoctor");
+            modelBuilder.ApplyConfiguration(new DoctorMapperOrm());
 
-                builder.Property(x => x.Id)
-                    .ValueGeneratedNever();
-
-                builder.Property(x => x.CRM)
-                    .IsRequired();
-
-                builder.Property(x => x.Name)
-                    .IsRequired();
-
-                builder.Property(x => x.LastActivity)
-                    .IsRequired();
-
-                builder.HasOne(d => d.CurrentActivity)
-                    .WithMany()
-                    .HasForeignKey(d => d.CurrentActivityId)
-                    .HasConstraintName("FK_TBActivity_TBDoctor")
-                    .OnDelete(DeleteBehavior.NoAction);
-            });
-
-            modelBuilder.Entity<Activity>(builder =>
-            {
-                builder.ToTable("TBActivity");
-
-                builder.Property(x => x.Id)
-                    .ValueGeneratedNever();
-
-                builder.Property(x => x.Type)
-                .HasConversion<int>()
-                    .IsRequired();
-
-                builder.Property(x => x.StartTime)
-                    .IsRequired();
-
-                builder.Property(x => x.EndTime)
-                    .IsRequired();
-
-                builder.HasMany(a => a.Doctors)
-                    .WithMany();
-            });
+            modelBuilder.ApplyConfiguration(new ActivityMapperOrm());
 
             base.OnModelCreating(modelBuilder);
         }

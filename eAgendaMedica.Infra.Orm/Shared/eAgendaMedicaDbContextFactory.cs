@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace eAgendaMedica.Infra.Orm.Shared
 {
@@ -7,11 +8,18 @@ namespace eAgendaMedica.Infra.Orm.Shared
     {
         public eAgendaMedicaDbContext CreateDbContext(string[] args)
         {
-            var builder = new DbContextOptionsBuilder<eAgendaMedicaDbContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<eAgendaMedicaDbContext>();
 
-            builder.UseSqlServer(@"Data Source=(LocalDb)\MSSqlLocalDb;Initial Catalog=eAgendaMedicaDb;Integrated Security=True");
+            IConfiguration configuracao = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json")
+               .Build();
 
-            return new eAgendaMedicaDbContext(builder.Options);
+            var connectionString = configuracao.GetConnectionString("SqlServer");
+
+            optionsBuilder.UseSqlServer(connectionString);
+
+            return new eAgendaMedicaDbContext(optionsBuilder.Options);
         }
     }
 }
