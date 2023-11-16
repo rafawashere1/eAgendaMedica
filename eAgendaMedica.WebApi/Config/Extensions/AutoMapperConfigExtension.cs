@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using eAgendaMedica.WebApi.Config.AutoMapperConfig;
 
-namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
+namespace eAgendaMedica.WebApi.Config.Extensions
 {
     public static class AutoMapperConfigExtension
     {
