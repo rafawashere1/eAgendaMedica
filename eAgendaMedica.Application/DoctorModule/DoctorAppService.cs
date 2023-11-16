@@ -64,7 +64,7 @@ namespace eAgendaMedica.Application.DoctorModule
             return Result.Ok(doctors);
         }
 
-        public async Task<Result<Doctor>> SelecionarPorIdAsync(Guid id)
+        public async Task<Result<Doctor>> GetByIdAsync(Guid id)
         {
             var doctor = await _doctorRepository.GetByIdAsync(id);
 

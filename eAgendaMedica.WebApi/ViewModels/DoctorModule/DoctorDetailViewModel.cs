@@ -9,5 +9,6 @@ namespace eAgendaMedica.WebApi.ViewModels.DoctorModule
         public string Name { get; set; }
         public DateTime LastActivity { get; set; }
         public ActivityListViewModel CurrentActivity { get; set; }
+        public Guid CurrentActivityId { get; set; }
     }
 }

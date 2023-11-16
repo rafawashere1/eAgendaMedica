@@ -9,11 +9,11 @@ namespace eAgendaMedica.Domain.DoctorModule
         public string Name { get; set; }
         public DateTime LastActivity { get; set; }
         public Activity CurrentActivity { get; set; }
-        public Guid CurrentActivityId { get; set; }
+        public Guid? CurrentActivityId { get; set; }
 
         public Doctor()
         {
-            
+
         }
 
         public bool CanDoActivity()

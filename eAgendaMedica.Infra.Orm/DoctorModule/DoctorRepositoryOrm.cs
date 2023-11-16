@@ -1,6 +1,7 @@
 ﻿using eAgendaMedica.Domain.DoctorModule;
 using eAgendaMedica.Domain.Shared;
 using eAgendaMedica.Infra.Orm.Shared;
+using Microsoft.EntityFrameworkCore;
 
 namespace eAgendaMedica.Infra.Orm.DoctorModule
 {
@@ -8,6 +9,11 @@ namespace eAgendaMedica.Infra.Orm.DoctorModule
     {
         public DoctorRepositoryOrm(IPersistenceContext dbContext) : base(dbContext)
         {
+        }
+
+        public override async Task<Doctor?> GetByIdAsync(Guid id)
+        {
+            return await Registers.Include(x => x.CurrentActivity).SingleOrDefaultAsync(x => x.Id == id);
         }
     }
 }

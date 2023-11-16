@@ -1,4 +1,6 @@
-﻿namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
+﻿using AutoMapper;
+
+namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
 {
     public static class AutoMapperConfigExtension
     {
@@ -8,6 +10,7 @@
             {
                 opt.AddProfile<DoctorProfile>();
                 opt.AddProfile<ActivityProfile>();
+
             });
         }
     }

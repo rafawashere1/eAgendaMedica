@@ -12,7 +12,7 @@ using eAgendaMedica.Infra.Orm.Shared;
 namespace eAgendaMedica.Infra.Orm.Migrations
 {
     [DbContext(typeof(eAgendaMedicaDbContext))]
-    [Migration("20231114070624_Initial-Config")]
+    [Migration("20231116065608_Initial-Config")]
     partial class InitialConfig
     {
         /// <inheritdoc />
@@ -24,21 +24,6 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("ActivityDoctor", b =>
-                {
-                    b.Property<Guid>("ActivityId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("DoctorsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ActivityId", "DoctorsId");
-
-                    b.HasIndex("DoctorsId");
-
-                    b.ToTable("ActivityDoctor");
-                });
 
             modelBuilder.Entity("eAgendaMedica.Domain.ActivityModule.Activity", b =>
                 {
@@ -68,7 +53,7 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("CurrentActivityId")
+                    b.Property<Guid?>("CurrentActivityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("LastActivity")
@@ -85,31 +70,20 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                     b.ToTable("TBDoctor", (string)null);
                 });
 
-            modelBuilder.Entity("ActivityDoctor", b =>
-                {
-                    b.HasOne("eAgendaMedica.Domain.ActivityModule.Activity", null)
-                        .WithMany()
-                        .HasForeignKey("ActivityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eAgendaMedica.Domain.DoctorModule.Doctor", null)
-                        .WithMany()
-                        .HasForeignKey("DoctorsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("eAgendaMedica.Domain.DoctorModule.Doctor", b =>
                 {
                     b.HasOne("eAgendaMedica.Domain.ActivityModule.Activity", "CurrentActivity")
-                        .WithMany()
+                        .WithMany("Doctors")
                         .HasForeignKey("CurrentActivityId")
                         .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired()
-                        .HasConstraintName("FK_TBActivity_TBDoctor");
+                        .HasConstraintName("FK_TBDoctor_TBActivity");
 
                     b.Navigation("CurrentActivity");
+                });
+
+            modelBuilder.Entity("eAgendaMedica.Domain.ActivityModule.Activity", b =>
+                {
+                    b.Navigation("Doctors");
                 });
 #pragma warning restore 612, 618
         }

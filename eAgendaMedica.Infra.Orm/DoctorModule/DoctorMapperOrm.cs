@@ -23,8 +23,9 @@ namespace eAgendaMedica.Infra.Orm.DoctorModule
                 .IsRequired();
 
             builder.HasOne(d => d.CurrentActivity)
-                .WithMany()
+                .WithMany(a => a.Doctors)
                 .HasForeignKey(d => d.CurrentActivityId)
+                .IsRequired(required: false)
                 .HasConstraintName("FK_TBActivity_TBDoctor")
                 .OnDelete(DeleteBehavior.NoAction);
         }

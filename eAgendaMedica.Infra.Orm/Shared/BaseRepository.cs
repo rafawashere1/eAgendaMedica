@@ -36,7 +36,7 @@ namespace eAgendaMedica.Infra.Orm.Shared
             return Registers.FirstOrDefault(x => x.Id == id);
         }
 
-        public async virtual Task<T> GetByIdAsync(Guid id)
+        public async virtual Task<T?> GetByIdAsync(Guid id)
         {
             return await Registers.FirstOrDefaultAsync(x => x.Id == id);
         }

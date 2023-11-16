@@ -8,9 +8,14 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
     {
         public DoctorProfile()
         {
-            CreateMap<DoctorFormsViewModel, Doctor>();
+            CreateMap<DoctorFormsViewModel, Doctor>()
+            .ForMember(d => d.CurrentActivity, opt => opt.Ignore());
+
             CreateMap<Doctor, DoctorListViewModel>();
-            CreateMap<Doctor, DoctorDetailViewModel>();
+
+            CreateMap<Doctor, DoctorDetailViewModel>()
+            .ForMember(d => d.LastActivity, opt => opt.MapFrom(o => o.LastActivity.ToShortDateString()));
+
             CreateMap<Doctor, SelectedDoctorViewModel>();
         }
     }

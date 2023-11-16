@@ -1,6 +1,9 @@
+using eAgendaMedica.Application.ActivityModule;
 using eAgendaMedica.Application.DoctorModule;
+using eAgendaMedica.Domain.ActivityModule;
 using eAgendaMedica.Domain.DoctorModule;
 using eAgendaMedica.Domain.Shared;
+using eAgendaMedica.Infra.Orm.ActivityModule;
 using eAgendaMedica.Infra.Orm.DoctorModule;
 using eAgendaMedica.Infra.Orm.Shared;
 using eAgendaMedica.WebApi.Config.AutoMapperConfig;
@@ -34,6 +37,8 @@ namespace eAgendaMedica.WebApi
 
             builder.Services.AddTransient<IDoctorRepository, DoctorRepositoryOrm>();
             builder.Services.AddTransient<DoctorAppService>();
+            builder.Services.AddTransient<IActivityRepository, ActivityRepositoryOrm>();
+            builder.Services.AddTransient<ActivityAppService>();
 
             builder.Services.ConfigureAutoMapper();
 
