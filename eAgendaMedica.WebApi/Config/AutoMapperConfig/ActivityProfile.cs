@@ -9,7 +9,10 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
         public ActivityProfile()
         {
             CreateMap<ActivityFormsViewModel, Activity>()
-            .ForMember(d => d.Doctors, opt => opt.Ignore());
+            .ForMember(d => d.Doctors, opt => opt.Ignore())
+            .ForMember(d => d.StartTime, opt => opt.MapFrom(o => o.StartTime.ToString(@"hh\:mm")))
+            .ForMember(d => d.EndTime, opt => opt.MapFrom(o => o.EndTime.ToString(@"hh\:mm")));
+
 
             CreateMap<Activity, ActivityDetailViewModel>()
             .ForMember(d => d.Doctors, opt => opt.MapFrom(o => o.Doctors.Select(x => x.Name)));

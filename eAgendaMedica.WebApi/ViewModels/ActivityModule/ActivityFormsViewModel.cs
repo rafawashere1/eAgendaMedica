@@ -1,5 +1,4 @@
 ﻿using eAgendaMedica.Domain.ActivityModule;
-using eAgendaMedica.Domain.DoctorModule;
 
 namespace eAgendaMedica.WebApi.ViewModels.ActivityModule
 {

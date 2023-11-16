@@ -26,7 +26,7 @@ namespace eAgendaMedica.WebApi
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.ConfigureControllers();
 
             var connectionString = builder.Configuration.GetConnectionString("SqlServer");
 
