@@ -1,4 +1,6 @@
-﻿using eAgendaMedica.Application.DoctorModule;
+﻿using AutoMapper;
+using eAgendaMedica.Application.DoctorModule;
+using eAgendaMedica.WebApi.ViewModels.DoctorModule;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eAgendaMedica.WebApi.Controllers
@@ -8,10 +10,12 @@ namespace eAgendaMedica.WebApi.Controllers
     public class DoctorController : ControllerBase
     {
         private readonly DoctorAppService _doctorService;
+        private readonly IMapper _mapper;
 
-        public DoctorController(DoctorAppService doctorService)
+        public DoctorController(DoctorAppService doctorService, IMapper mapper)
         {
             _doctorService = doctorService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -19,7 +23,9 @@ namespace eAgendaMedica.WebApi.Controllers
         {
             var doctors = await _doctorService.GetAllAsync();
 
-            return Ok(doctors);
+            var viewModel = _mapper.Map<List<DoctorListViewModel>>(doctors.Value);
+
+            return Ok(viewModel);
         }
     }
 }

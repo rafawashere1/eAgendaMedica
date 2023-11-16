@@ -3,6 +3,9 @@ using eAgendaMedica.Domain.DoctorModule;
 using eAgendaMedica.Domain.Shared;
 using eAgendaMedica.Infra.Orm.DoctorModule;
 using eAgendaMedica.Infra.Orm.Shared;
+using eAgendaMedica.WebApi.Config.AutoMapperConfig;
+using eAgendaMedica.WebApi.Config.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace eAgendaMedica.WebApi
@@ -12,6 +15,11 @@ namespace eAgendaMedica.WebApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.Configure<ApiBehaviorOptions>(config =>
+            {
+                config.SuppressModelStateInvalidFilter = true;
+            });
 
             // Add services to the container.
 
@@ -27,9 +35,10 @@ namespace eAgendaMedica.WebApi
             builder.Services.AddTransient<IDoctorRepository, DoctorRepositoryOrm>();
             builder.Services.AddTransient<DoctorAppService>();
 
+            builder.Services.ConfigureAutoMapper();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.ConfigureSwagger();
 
             var app = builder.Build();
 
