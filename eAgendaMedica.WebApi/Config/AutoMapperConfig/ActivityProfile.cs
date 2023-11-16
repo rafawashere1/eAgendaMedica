@@ -20,6 +20,7 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
             .ForMember(d => d.Doctors, opt => opt.MapFrom(o => o.Doctors.Select(x => x.Name)));
 
             CreateMap<Activity, ActivityListViewModel>();
+            CreateMap<Activity, List<ActivityListViewModel>>();
         }
     }
 }

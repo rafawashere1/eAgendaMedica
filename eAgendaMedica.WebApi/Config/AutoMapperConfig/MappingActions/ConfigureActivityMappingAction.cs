@@ -16,7 +16,7 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig.MappingActions
 
         public void Process(ActivityFormsViewModel source, Activity destination, ResolutionContext context)
         {
-            destination.Doctors = _doctorRepository.RetrieveMany(source.SelectedDoctors);
+            destination.Doctors = _doctorRepository.GetMany(source.SelectedDoctors);
         }
     }
 }

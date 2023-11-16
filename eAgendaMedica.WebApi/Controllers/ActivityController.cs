@@ -38,7 +38,7 @@ namespace eAgendaMedica.WebApi.Controllers
             //    .Skip((page - 1) * itemsPerPage)
             //    .Take(itemsPerPage);
 
-            var viewModel = _mapper.Map<List<ActivityListViewModel>>(activityResult);
+            var viewModel = _mapper.Map<List<ActivityListViewModel>>(activityResult.Value);
 
             //var paginationInfo = new
             //{

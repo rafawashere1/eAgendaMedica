@@ -11,7 +11,7 @@ namespace eAgendaMedica.Infra.Orm.DoctorModule
         {
         }
 
-        public List<Doctor> RetrieveMany(List<Guid> doctorsIds)
+        public List<Doctor> GetMany(List<Guid> doctorsIds)
         {
             return Registers.Where(doctor => doctorsIds.Contains(doctor.Id)).ToList();
         }

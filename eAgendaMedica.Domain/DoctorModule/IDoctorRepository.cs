@@ -4,6 +4,6 @@ namespace eAgendaMedica.Domain.DoctorModule
 {
     public interface IDoctorRepository : IBaseRepository<Doctor>
     {
-        List<Doctor>? RetrieveMany(List<Guid> selectedDoctors);
+        List<Doctor>? GetMany(List<Guid> selectedDoctors);
     }
 }
