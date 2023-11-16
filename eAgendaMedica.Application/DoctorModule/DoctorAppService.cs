@@ -11,7 +11,8 @@ namespace eAgendaMedica.Application.DoctorModule
 
         public DoctorAppService(IDoctorRepository doctorRepository, IPersistenceContext persistenceContext)
         {
-
+            _doctorRepository = doctorRepository;
+            _persistenceContext = persistenceContext;
         }
 
         public async Task<Result<Doctor>> AddAsync(Doctor doctor)

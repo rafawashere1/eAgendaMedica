@@ -1,6 +1,4 @@
-﻿using eAgendaMedica.Domain.ActivityModule;
-using eAgendaMedica.Domain.DoctorModule;
-using eAgendaMedica.Domain.Shared;
+﻿using eAgendaMedica.Domain.Shared;
 using eAgendaMedica.Infra.Orm.ActivityModule;
 using eAgendaMedica.Infra.Orm.DoctorModule;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +9,7 @@ namespace eAgendaMedica.Infra.Orm.Shared
     {
         public eAgendaMedicaDbContext(DbContextOptions options) : base(options)
         {
-            
+
         }
 
         public async Task<bool> SaveAsync()

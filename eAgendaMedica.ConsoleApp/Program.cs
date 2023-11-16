@@ -10,12 +10,12 @@ namespace eAgendaMedica.ConsoleApp
 {
     internal class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             Doctor doctor = new Doctor
             {
-                CRM = "12347-SP",
-                Name = "Dr. Exemplo2",
+                CRM = "22347-SP",
+                Name = "Dr. Exemplo3",
                 LastActivity = DateTime.Now.AddDays(-1),
                 CurrentActivity = new Domain.ActivityModule.Activity(),
                 CurrentActivityId = Guid.NewGuid()
@@ -34,13 +34,7 @@ namespace eAgendaMedica.ConsoleApp
 
             var dbContext = new eAgendaMedicaDbContext(optionsBuilder.Options);
 
-            var doctorRepository = new DoctorRepositoryOrm(dbContext);
-
-            var doctorService = new DoctorAppService(doctorRepository, dbContext);
-
-            doctorService.AddAsync(doctor);
-
-            await Task.Delay(2000);
+            dbContext.Add(doctor);
 
             dbContext.SaveChanges();
         }

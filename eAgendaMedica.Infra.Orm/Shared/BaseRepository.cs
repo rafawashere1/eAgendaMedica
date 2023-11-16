@@ -9,10 +9,10 @@ namespace eAgendaMedica.Infra.Orm.Shared
         protected eAgendaMedicaDbContext DbContext { get; }
         protected DbSet<T> Registers { get; }
 
-        public BaseRepository(eAgendaMedicaDbContext dbContext)
+        public BaseRepository(IPersistenceContext ctx)
         {
-            DbContext = dbContext;
-            Registers = dbContext.Set<T>();
+            DbContext = ctx as eAgendaMedicaDbContext;
+            Registers = DbContext.Set<T>();
         }
 
         public async Task<bool> AddAsync(T register)
