@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Pre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAgendaMedica.ConsoleApp", "eAgendaMedica.ConsoleApp\eAgendaMedica.ConsoleApp.csproj", "{D3EB34A4-120D-4CC2-927F-58A4A14EA037}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{7AD6D547-ADA1-4313-8CE8-62CEFC0D595F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgendiaMedica.Tests", "eAgendiaMedica.Tests\eAgendiaMedica.Tests.csproj", "{252112ED-AAF6-4078-B141-0B2D59AE9086}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{D3EB34A4-120D-4CC2-927F-58A4A14EA037}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3EB34A4-120D-4CC2-927F-58A4A14EA037}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3EB34A4-120D-4CC2-927F-58A4A14EA037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{252112ED-AAF6-4078-B141-0B2D59AE9086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252112ED-AAF6-4078-B141-0B2D59AE9086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252112ED-AAF6-4078-B141-0B2D59AE9086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252112ED-AAF6-4078-B141-0B2D59AE9086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,7 @@ Global
 		{A256DE8A-3B8F-4FDE-8120-BE2694F89B72} = {9D768EBF-6011-4036-9C5F-DE8B1A622EEF}
 		{3E4B7B0D-56D9-4E89-991E-E3D52096B3AC} = {F409AAF7-1433-44AB-85F0-566F5606C6B8}
 		{D3EB34A4-120D-4CC2-927F-58A4A14EA037} = {78666F81-2F68-433D-A955-966E4D06812E}
+		{252112ED-AAF6-4078-B141-0B2D59AE9086} = {7AD6D547-ADA1-4313-8CE8-62CEFC0D595F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A2F4EF5E-ED11-4AF9-AB8D-A56367EBB75B}

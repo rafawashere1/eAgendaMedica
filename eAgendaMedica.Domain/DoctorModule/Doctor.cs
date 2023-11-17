@@ -16,6 +16,14 @@ namespace eAgendaMedica.Domain.DoctorModule
 
         }
 
+        public Doctor(string crm, string name, DateTime lastActivity, Activity currentActivity)
+        {
+            CRM = crm;
+            Name = name;
+            LastActivity = lastActivity;
+            CurrentActivity = currentActivity;
+        }
+
         public bool CanDoActivity()
         {
             TimeSpan cooldown = CurrentActivity.Type == TypeActivity.Surgery ? TimeSpan.FromHours(4) : TimeSpan.FromMinutes(20);
