@@ -55,7 +55,7 @@ namespace eAgendaMedica.WebApi.Controllers
         [ProducesResponseType(typeof(ActivityDetailViewModel), 200)]
         [ProducesResponseType(typeof(string[]), 404)]
         [ProducesResponseType(typeof(string[]), 500)]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetFullVisualizationById(Guid id)
         {
             var selectedActivityResult = await _activityService.GetByIdAsync(id);
 
@@ -63,6 +63,22 @@ namespace eAgendaMedica.WebApi.Controllers
                 return NotFound(selectedActivityResult.Errors);
 
             var viewModel = _mapper.Map<ActivityDetailViewModel>(selectedActivityResult.Value);
+
+            return Ok(viewModel);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(ActivityFormsViewModel), 200)]
+        [ProducesResponseType(typeof(string[]), 404)]
+        [ProducesResponseType(typeof(string[]), 500)]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var selectedActivityResult = await _activityService.GetByIdAsync(id);
+
+            if (selectedActivityResult.IsFailed)
+                return NotFound(selectedActivityResult.Errors);
+
+            var viewModel = _mapper.Map<ActivityFormsViewModel>(selectedActivityResult.Value);
 
             return Ok(viewModel);
         }

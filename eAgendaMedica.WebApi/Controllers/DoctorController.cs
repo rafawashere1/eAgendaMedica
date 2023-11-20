@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using eAgendaMedica.Application.DoctorModule;
 using eAgendaMedica.Domain.DoctorModule;
-using eAgendaMedica.WebApi.ViewModels.ActivityModule;
 using eAgendaMedica.WebApi.ViewModels.DoctorModule;
-using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eAgendaMedica.WebApi.Controllers
@@ -57,7 +55,7 @@ namespace eAgendaMedica.WebApi.Controllers
         [ProducesResponseType(typeof(DoctorDetailViewModel), 200)]
         [ProducesResponseType(typeof(string[]), 404)]
         [ProducesResponseType(typeof(string[]), 500)]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetFullVisualizationById(Guid id)
         {
             var selectedDoctorResult = await _doctorService.GetByIdAsync(id);
 
@@ -65,6 +63,22 @@ namespace eAgendaMedica.WebApi.Controllers
                 return NotFound(selectedDoctorResult.Errors);
 
             var viewModel = _mapper.Map<DoctorDetailViewModel>(selectedDoctorResult.Value);
+
+            return Ok(viewModel);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(DoctorFormsViewModel), 200)]
+        [ProducesResponseType(typeof(string[]), 404)]
+        [ProducesResponseType(typeof(string[]), 500)]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var selectedDoctorResult = await _doctorService.GetByIdAsync(id);
+
+            if (selectedDoctorResult.IsFailed)
+                return NotFound(selectedDoctorResult.Errors);
+
+            var viewModel = _mapper.Map<DoctorFormsViewModel>(selectedDoctorResult.Value);
 
             return Ok(viewModel);
         }

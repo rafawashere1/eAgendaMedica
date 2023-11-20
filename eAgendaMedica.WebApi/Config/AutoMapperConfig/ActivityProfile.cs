@@ -15,6 +15,8 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
             .ForMember(d => d.EndTime, opt => opt.MapFrom(o => o.EndTime.ToString(@"hh\:mm")))
             .AfterMap<ConfigureActivityMappingAction>();
 
+            CreateMap<Activity, ActivityFormsViewModel>();
+
 
             CreateMap<Activity, ActivityDetailViewModel>()
             .ForMember(d => d.Doctors, opt => opt.MapFrom(o => o.Doctors.Select(x => x.Name)));

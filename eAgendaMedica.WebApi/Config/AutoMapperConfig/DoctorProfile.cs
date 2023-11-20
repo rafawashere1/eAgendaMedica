@@ -11,6 +11,8 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
             CreateMap<DoctorFormsViewModel, Doctor>()
             .ForMember(d => d.CurrentActivity, opt => opt.Ignore());
 
+            CreateMap<Doctor, DoctorFormsViewModel>();
+
             CreateMap<Doctor, DoctorListViewModel>();
 
             CreateMap<Doctor, DoctorDetailViewModel>()
