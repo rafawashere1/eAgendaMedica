@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eAgendaMedica.WebApi.Controllers
 {
-    [Route("api/atividades")]
+    [Route("api/activities")]
     [ApiController]
     public class ActivityController : ApiControllerBase
     {

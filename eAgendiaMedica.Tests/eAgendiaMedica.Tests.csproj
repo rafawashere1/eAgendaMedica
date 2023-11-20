@@ -15,20 +15,19 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="FluentResults.Extensions.FluentAssertions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="3.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="Moq" Version="4.20.69" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
+    <PackageReference Include="NBuilder" Version="6.1.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Application\ActivityModule\" />
-    <Folder Include="Application\DoctorModule\" />
-    <Folder Include="Domain\ActivityModule\" />
-    <Folder Include="Domain\DoctorModule\" />
-    <Folder Include="Infra\DoctorModule\" />
     <Folder Include="Shared\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">
     <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>$(SSDTPath)\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
@@ -42,6 +41,11 @@
       <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll</HintPath>
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eAgendaMedica.Application\eAgendaMedica.Application.csproj" />
+    <ProjectReference Include="..\eAgendaMedica.Domain\eAgendaMedica.Domain.csproj" />
+    <ProjectReference Include="..\eAgendaMedica.Infra.Orm\eAgendaMedica.Infra.Orm.csproj" />
   </ItemGroup>
   <PropertyGroup>
     <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>

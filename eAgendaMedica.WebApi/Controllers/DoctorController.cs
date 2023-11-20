@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eAgendaMedica.WebApi.Controllers
 {
-    [Route("api/medicos")]
+    [Route("api/doctors")]
     [ApiController]
     public class DoctorController : ApiControllerBase
     {
