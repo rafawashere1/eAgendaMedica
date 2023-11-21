@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using eAgendaMedica.WebApi.Config.Extensions;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Serilog;
-using System.Text.RegularExpressions;
 
 namespace eAgenda.WebApi.Filters
 {
@@ -30,23 +30,6 @@ namespace eAgenda.WebApi.Filters
             {
                 Log.Logger.Error($"[Module {moduleName}] -> Failed to execute {endpointName}");
             }
-        }
-    }
-
-    public static class StringExtensions
-    {
-        public static string SeparateWordsByUppercase(this string methodName)
-        {
-            string regex = @"([A-Z][a-z]*)";
-
-            MatchCollection matches = Regex.Matches(methodName, regex);
-
-            string separatedMethodName = "";
-
-            foreach (Match m in matches.Cast<Match>())
-                separatedMethodName += m.Value + " ";
-
-            return separatedMethodName;
         }
     }
 }
