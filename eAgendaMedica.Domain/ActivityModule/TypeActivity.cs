@@ -1,7 +1,12 @@
-﻿namespace eAgendaMedica.Domain.ActivityModule
+﻿using System.ComponentModel;
+
+namespace eAgendaMedica.Domain.ActivityModule
 {
     public enum TypeActivity
     {
-        Surgery, Appointment
+        [Description("Cirurgia")]
+        Surgery,
+        [Description("Consulta")]
+        Appointment
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eAgendaMedica.Domain.ActivityModule;
+using eAgendaMedica.Domain.Shared;
 using eAgendaMedica.WebApi.Config.AutoMapperConfig.MappingActions;
 using eAgendaMedica.WebApi.ViewModels.ActivityModule;
 
@@ -15,13 +16,16 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
             .ForMember(d => d.EndTime, opt => opt.MapFrom(o => o.EndTime.ToString(@"hh\:mm")))
             .AfterMap<ConfigureActivityMappingAction>();
 
-            CreateMap<Activity, ActivityFormsViewModel>();
+            CreateMap<Activity, ActivityFormsViewModel>()
+            .ForMember(d => d.Type, opt => opt.MapFrom(o => o.Type.GetDescription()));
 
 
             CreateMap<Activity, ActivityDetailViewModel>()
+            .ForMember(d => d.Type, opt => opt.MapFrom(o => o.Type.GetDescription()))
             .ForMember(d => d.Doctors, opt => opt.MapFrom(o => o.Doctors.Select(x => x.Name)));
 
-            CreateMap<Activity, ActivityListViewModel>();
+            CreateMap<Activity, ActivityListViewModel>()
+            .ForMember(d => d.Type, opt => opt.MapFrom(o => o.Type.GetDescription()));
         }
     }
 }
