@@ -22,33 +22,38 @@ namespace eAgendaMedica.WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(List<DoctorListViewModel>), 200)]
         [ProducesResponseType(typeof(string[]), 500)]
-        public async Task<IActionResult> GetAll(/*int page = 1, int itemsPerPage = 10*/)
+        public async Task<IActionResult> GetAll(int page = 1, int itemsPerPage = 10)
         {
             var doctorsResult = await _doctorService.GetAllAsync();
 
-            //var totalItems = doctorsResult.Value.Count;
-            //var totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+            var totalItems = doctorsResult.Value.Count;
+            var totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
 
-            //if (page < 1 || page > totalPages)
-            //{
-            //    return BadRequest("Invalid page number.");
-            //}
+            if (page < 1 || page > totalPages)
+            {
+                return BadRequest("Invalid page number.");
+            }
 
-            //var pagedDoctors = doctorsResult.Value
-            //    .Skip((page - 1) * itemsPerPage)
-            //    .Take(itemsPerPage);
+            var pagedDoctors = doctorsResult.Value
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage);
 
-            var viewModel = _mapper.Map<List<DoctorListViewModel>>(doctorsResult.Value);
+            var viewModel = _mapper.Map<List<DoctorListViewModel>>(pagedDoctors);
 
-            //var paginationInfo = new
-            //{
-            //    TotalItems = totalItems,
-            //    TotalPages = totalPages,
-            //    Page = page,
-            //    ItemsPerPage = itemsPerPage
-            //};
+            var paginationInfo = new
+            {
+                TotalItems = totalItems,
+                TotalPages = totalPages,
+                Page = page,
+                ItemsPerPage = itemsPerPage
+            };
 
-            return Ok(viewModel);
+            return StatusCode(200, new
+            {
+                Success = true,
+                Data = viewModel,
+                Pagination = paginationInfo
+            });
         }
 
         [HttpGet("full-visualization/{id}")]

@@ -17,18 +17,18 @@ namespace eAgenda.WebApi.Filters
 
             moduleName = context.RouteData.Values["controller"];
 
-            Log.Logger.Information($"[Módulo de {endpointName}] -> Tentando {moduleName}...");
+            Log.Logger.Information($"[Module {endpointName}] -> Trying {moduleName}...");
         }
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
             if (context.Exception == null)
             {
-                Log.Logger.Information($"[Módulo de {moduleName}] -> {endpointName} executado com sucesso");
+                Log.Logger.Information($"[Module {moduleName}] -> {endpointName} executed successfully");
             }
             else if (context.Exception != null)
             {
-                Log.Logger.Error($"[Módulo de {moduleName}] -> Falha ao executar {endpointName}");
+                Log.Logger.Error($"[Module {moduleName}] -> Failed to execute {endpointName}");
             }
         }
     }
@@ -43,7 +43,7 @@ namespace eAgenda.WebApi.Filters
 
             string separatedMethodName = "";
 
-            foreach (Match m in matches)
+            foreach (Match m in matches.Cast<Match>())
                 separatedMethodName += m.Value + " ";
 
             return separatedMethodName;

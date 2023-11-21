@@ -22,33 +22,38 @@ namespace eAgendaMedica.WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(List<ActivityListViewModel>), 200)]
         [ProducesResponseType(typeof(string[]), 500)]
-        public async Task<IActionResult> GetAll(/*int page = 1, int itemsPerPage = 10*/)
+        public async Task<IActionResult> GetAll(int page = 1, int itemsPerPage = 10)
         {
             var activityResult = await _activityService.GetAllAsync();
 
-            //var totalItems = activityResult.Value.Count;
-            //var totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+            var totalItems = activityResult.Value.Count;
+            var totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
 
-            //if (page < 1 || page > totalPages)
-            //{
-            //    return BadRequest("Invalid page number.");
-            //}
+            if (page < 1 || page > totalPages)
+            {
+                return BadRequest("Invalid page number.");
+            }
 
-            //var pagedAtivities = activityResult.Value
-            //    .Skip((page - 1) * itemsPerPage)
-            //    .Take(itemsPerPage);
+            var pagedAtivities = activityResult.Value
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage);
 
-            var viewModel = _mapper.Map<List<ActivityListViewModel>>(activityResult.Value);
+            var viewModel = _mapper.Map<List<ActivityListViewModel>>(pagedAtivities);
 
-            //var paginationInfo = new
-            //{
-            //    TotalItems = totalItems,
-            //    TotalPages = totalPages,
-            //    Page = page,
-            //    ItemsPerPage = itemsPerPage
-            //};
+            var paginationInfo = new
+            {
+                TotalItems = totalItems,
+                TotalPages = totalPages,
+                Page = page,
+                ItemsPerPage = itemsPerPage
+            };
 
-            return Ok(viewModel);
+            return StatusCode(200, new
+            {
+                Success = true,
+                Data = viewModel,
+                Pagination = paginationInfo
+            });
         }
 
         [HttpGet("full-visualization/{id}")]

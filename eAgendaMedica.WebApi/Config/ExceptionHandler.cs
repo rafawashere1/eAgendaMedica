@@ -26,7 +26,7 @@ namespace eAgendaMedica.WebApi.Config
                 {
                     Success = false,
                     Errors = new List<string>
-                        { "Nossa aplicação está com alguns problemas, tente novamente mais tarde" }
+                        { "An unexpected error occurred in our application. Please try again later or contact support for assistance." }
                 };
 
                 ctx.Response.WriteAsync(JsonSerializer.Serialize(problem));

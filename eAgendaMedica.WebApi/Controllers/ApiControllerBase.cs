@@ -35,13 +35,5 @@ namespace eAgendaMedica.WebApi.Controllers
                 Errors = errorMessages
             });
         }
-
-        //protected IActionResult OkWithPagination(object value, object paginationInfo)
-        //{
-        //    return Ok(new
-        //    {
-        //        Pagination = paginationInfo
-        //    });
-        //}
     }
 }
