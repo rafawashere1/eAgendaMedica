@@ -13,6 +13,11 @@ namespace eAgendaMedica.Infra.Orm.DoctorModule
 
         public List<Doctor> GetMany(List<Guid> doctorsIds)
         {
+            if (doctorsIds == null)
+            {
+                return new List<Doctor>();
+            }
+
             return Registers.Where(doctor => doctorsIds.Contains(doctor.Id)).ToList();
         }
 

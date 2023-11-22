@@ -6,9 +6,6 @@ namespace eAgendaMedica.Domain.ActivityModule
     {
         public ActivityValidator()
         {
-            RuleFor(a => a.Type)
-                .NotNull().WithMessage("O tipo de atividade deve ser fornecido.");
-
             RuleFor(a => a.StartTime)
                 .NotEmpty().WithMessage("A hora de início da atividade deve ser fornecida.");
 
@@ -21,6 +18,18 @@ namespace eAgendaMedica.Domain.ActivityModule
             RuleFor(a => a.Doctors)
                 .NotEmpty().WithMessage("Pelo menos um médico deve estar associado à atividade.")
                 .Must(doctors => doctors != null && doctors.Count > 0).WithMessage("Pelo menos um médico deve estar associado à atividade.");
+
+            RuleFor(a => a.Type)
+            .NotNull().WithMessage("O tipo de atividade deve ser fornecido.")
+            .Must((activity, type) =>
+            {
+                if (type == TypeActivity.Appointment)
+                    return activity.Doctors?.Count == 1;
+                else if (type == TypeActivity.Surgery)
+                    return true;
+                return false;
+
+            }).WithMessage("Para Consulta, apenas um médico pode ser selecionado.");
         }
     }
 }
