@@ -1,7 +1,5 @@
-﻿using eAgendaMedica.Application.DoctorModule;
-using eAgendaMedica.Domain.ActivityModule;
+﻿using eAgendaMedica.Domain.ActivityModule;
 using eAgendaMedica.Domain.DoctorModule;
-using eAgendaMedica.Infra.Orm.DoctorModule;
 using eAgendaMedica.Infra.Orm.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +14,7 @@ namespace eAgendaMedica.ConsoleApp
             Doctor doctor = new Doctor
             {
                 CRM = "23347-SP",
-                Name = "Dr. Exemplo4",
+                Name = "Dr Exemplo4",
                 CurrentActivity = new Activity(),
                 CurrentActivityId = Guid.NewGuid()
             };
@@ -24,7 +22,7 @@ namespace eAgendaMedica.ConsoleApp
             Doctor doctor2 = new Doctor
             {
                 CRM = "24547-SP",
-                Name = "Dr. Exemplo5",
+                Name = "Dr Exemplo5",
                 CurrentActivity = new Activity(),
                 CurrentActivityId = Guid.NewGuid()
             };
@@ -32,6 +30,8 @@ namespace eAgendaMedica.ConsoleApp
             var activity = new Activity
             {
                 Type = TypeActivity.Surgery,
+                StartDay = new DateTime(2023, 1, 1, 9, 0, 0),
+                EndDay = new DateTime(2023, 1, 1, 17, 0, 0),
                 StartTime = TimeSpan.FromHours(9),
                 EndTime = TimeSpan.FromHours(17),
                 Doctors = new List<Doctor> { doctor, doctor2 },

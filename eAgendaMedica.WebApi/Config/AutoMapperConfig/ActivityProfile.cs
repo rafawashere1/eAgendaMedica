@@ -11,21 +11,23 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
         public ActivityProfile()
         {
             CreateMap<ActivityFormsViewModel, Activity>()
-            .ForMember(d => d.Doctors, opt => opt.Ignore())
-            .ForMember(d => d.StartTime, opt => opt.MapFrom(o => o.StartTime.ToString(@"hh\:mm")))
-            .ForMember(d => d.EndTime, opt => opt.MapFrom(o => o.EndTime.ToString(@"hh\:mm")))
+            .ForMember(dest => dest.Doctors, opt => opt.Ignore())
+            .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => src.StartTime.ToString(@"hh\:mm")))
+            .ForMember(dest => dest.EndTime, opt => opt.MapFrom(src => src.EndTime.ToString(@"hh\:mm")))
             .AfterMap<ConfigureActivityMappingAction>();
 
+
             CreateMap<Activity, ActivityFormsViewModel>()
-            .ForMember(d => d.Type, opt => opt.MapFrom(o => o.Type.GetDescription()));
+            .ForMember(dest => dest.SelectedDoctors, opt => opt.MapFrom(src => src.Doctors.Select(doctor => doctor.Id).ToList()));
 
 
             CreateMap<Activity, ActivityDetailViewModel>()
-            .ForMember(d => d.Type, opt => opt.MapFrom(o => o.Type.GetDescription()))
-            .ForMember(d => d.Doctors, opt => opt.MapFrom(o => o.Doctors));
+            .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type.GetDescription()))
+            .ForMember(dest => dest.Doctors, opt => opt.MapFrom(src => src.Doctors));
 
             CreateMap<Activity, ActivityListViewModel>()
-            .ForMember(d => d.Type, opt => opt.MapFrom(o => o.Type.GetDescription()));
+            .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type.GetDescription()))
+            .ForMember(dest => dest.SelectedDoctors, opt => opt.MapFrom(src => src.Doctors.Select(doctor => doctor.Id).ToList()));
         }
     }
 }

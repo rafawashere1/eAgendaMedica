@@ -13,7 +13,13 @@ namespace eAgendaMedica.WebApi.Config.Extensions
                 x.MapType<TimeSpan>(() => new OpenApiSchema
                 {
                     Type = "string",
-                    Example = new OpenApiString("00:00:00")
+                    Example = new OpenApiString("00:00")
+                });
+
+                x.MapType<DateTime>(() => new OpenApiSchema
+                {
+                    Type = "string",
+                    Example = new OpenApiString($"{DateTime.UtcNow:yyyy-MM-dd}")
                 });
             });
         }

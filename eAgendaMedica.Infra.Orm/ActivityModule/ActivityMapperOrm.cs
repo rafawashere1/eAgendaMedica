@@ -17,6 +17,12 @@ namespace eAgendaMedica.Infra.Orm.ActivityModule
             .HasConversion<int>()
                 .IsRequired();
 
+            builder.Property(x => x.StartDay)
+                .IsRequired();
+
+            builder.Property(x => x.EndDay)
+                .IsRequired();
+
             builder.Property(x => x.StartTime)
                 .IsRequired();
 
