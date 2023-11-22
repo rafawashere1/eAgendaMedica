@@ -22,7 +22,7 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
 
             CreateMap<Activity, ActivityDetailViewModel>()
             .ForMember(d => d.Type, opt => opt.MapFrom(o => o.Type.GetDescription()))
-            .ForMember(d => d.Doctors, opt => opt.MapFrom(o => o.Doctors.Select(x => x.Name)));
+            .ForMember(d => d.Doctors, opt => opt.MapFrom(o => o.Doctors));
 
             CreateMap<Activity, ActivityListViewModel>()
             .ForMember(d => d.Type, opt => opt.MapFrom(o => o.Type.GetDescription()));

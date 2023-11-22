@@ -73,7 +73,7 @@ namespace eAgendaMedica.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(ActivityFormsViewModel), 200)]
+        [ProducesResponseType(typeof(ActivityListViewModel), 200)]
         [ProducesResponseType(typeof(string[]), 404)]
         [ProducesResponseType(typeof(string[]), 500)]
         public async Task<IActionResult> GetById(Guid id)
@@ -83,7 +83,7 @@ namespace eAgendaMedica.WebApi.Controllers
             if (selectedActivityResult.IsFailed)
                 return NotFound(selectedActivityResult.Errors);
 
-            var viewModel = _mapper.Map<ActivityFormsViewModel>(selectedActivityResult.Value);
+            var viewModel = _mapper.Map<ActivityListViewModel>(selectedActivityResult.Value);
 
             return Ok(viewModel);
         }
