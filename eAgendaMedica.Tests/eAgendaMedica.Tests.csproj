@@ -20,10 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\AcitivityModule\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\eAgendaMedica.Application\eAgendaMedica.Application.csproj" />
     <ProjectReference Include="..\eAgendaMedica.Domain\eAgendaMedica.Domain.csproj" />
     <ProjectReference Include="..\eAgendaMedica.Infra.Orm\eAgendaMedica.Infra.Orm.csproj" />

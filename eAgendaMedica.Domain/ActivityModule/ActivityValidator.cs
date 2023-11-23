@@ -6,6 +6,17 @@ namespace eAgendaMedica.Domain.ActivityModule
     {
         public ActivityValidator()
         {
+            RuleFor(d => d.Title)
+                .NotEmpty().WithMessage("O Título da atividade deve ser fornecido.");
+
+            RuleFor(activity => activity.StartDay)
+            .NotEmpty().WithMessage("O Dia de Início deve ser fornecido.");
+
+            RuleFor(activity => activity.EndDay)
+                .NotEmpty().WithMessage("O Dia de Térnino deve ser fornecido.")
+                .GreaterThanOrEqualTo(activity => activity.StartDay)
+                .WithMessage("O dia de término deve ser igual ou maior que o dia de início");
+
             RuleFor(a => a.StartTime)
                 .NotEmpty().WithMessage("A hora de início da atividade deve ser fornecida.");
 

@@ -11,14 +11,14 @@ namespace eAgendaMedica.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Doctor doctor = new Doctor
+            var doctor = new Doctor
             {
                 CRM = "23347-SP",
                 Name = "Dr Exemplo4",
                 Activities = new List<Activity>(),
             };
 
-            Doctor doctor2 = new Doctor
+            var doctor2 = new Doctor
             {
                 CRM = "24547-SP",
                 Name = "Dr Exemplo5",

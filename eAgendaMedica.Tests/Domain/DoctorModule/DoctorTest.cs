@@ -58,6 +58,19 @@ namespace eAgendaMedica.Tests.Domain.DoctorModule
         }
 
         [TestMethod]
+        public void Should_not_accept_with_special_character()
+        {
+            //arrange
+            _doctor.Name = "!@#$";
+
+            //action
+            ValidationResult result = _validator.Validate(_doctor);
+
+            //assert
+            result.IsValid.Should().BeFalse();
+        }
+
+        [TestMethod]
         public void Should_not_accept_name_with_less_than_3_character()
         {
             //arrange
