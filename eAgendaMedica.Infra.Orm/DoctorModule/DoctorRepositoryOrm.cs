@@ -23,7 +23,20 @@ namespace eAgendaMedica.Infra.Orm.DoctorModule
 
         public override async Task<Doctor?> GetByIdAsync(Guid id)
         {
-            return await Registers.Include(x => x.CurrentActivity).SingleOrDefaultAsync(x => x.Id == id);
+            return await Registers.Include(x => x.Activities).SingleOrDefaultAsync(x => x.Id == id);
+        }
+
+        public override async Task<List<Doctor>> GetAllAsync()
+        {
+            return await Registers.Include(x => x.Activities).ToListAsync();
+        }
+
+        public override bool Exist(Doctor doctor, bool isRemove = false)
+        {
+            if (isRemove)
+                return Registers.Contains(doctor);
+
+            return Registers.ToList().Any(a => a.CRM == doctor.CRM);
         }
     }
 }

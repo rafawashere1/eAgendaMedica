@@ -15,16 +15,14 @@ namespace eAgendaMedica.ConsoleApp
             {
                 CRM = "23347-SP",
                 Name = "Dr Exemplo4",
-                CurrentActivity = new Activity(),
-                CurrentActivityId = Guid.NewGuid()
+                Activities = new List<Activity>(),
             };
 
             Doctor doctor2 = new Doctor
             {
                 CRM = "24547-SP",
                 Name = "Dr Exemplo5",
-                CurrentActivity = new Activity(),
-                CurrentActivityId = Guid.NewGuid()
+                Activities = new List<Activity>(),
             };
 
             var activity = new Activity

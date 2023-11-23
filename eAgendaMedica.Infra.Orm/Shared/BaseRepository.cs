@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace eAgendaMedica.Infra.Orm.Shared
 {
 
-    public class BaseRepository<T> where T : Entity
+    public abstract class BaseRepository<T> where T : Entity
     {
         protected eAgendaMedicaDbContext DbContext { get; }
         protected DbSet<T> Registers { get; }
@@ -41,9 +41,11 @@ namespace eAgendaMedica.Infra.Orm.Shared
             return await Registers.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<List<T>> GetAllAsync()
+        public async virtual Task<List<T>> GetAllAsync()
         {
             return await Registers.ToListAsync();
         }
+
+        public abstract bool Exist(T obj, bool isRemove = false);
     }
 }

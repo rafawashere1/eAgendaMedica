@@ -1,5 +1,6 @@
 ﻿using eAgendaMedica.Domain.ActivityModule;
 using eAgendaMedica.Domain.Shared;
+using System.Numerics;
 
 namespace eAgendaMedica.Domain.DoctorModule
 {
@@ -8,29 +9,38 @@ namespace eAgendaMedica.Domain.DoctorModule
         public string CRM { get; set; }
         public string Name { get; set; }
         public DateTime LastActivity { get; set; }
-        public Activity CurrentActivity { get; set; }
-        public Guid? CurrentActivityId { get; set; }
+        public List<Activity> Activities { get; set; }
 
         public Doctor()
         {
 
         }
 
-        public Doctor(string crm, string name, DateTime lastActivity, Activity currentActivity)
+        public Doctor(string cRM, string name, DateTime lastActivity, List<Activity> activities)
         {
-            CRM = crm;
+            CRM = cRM;
             Name = name;
             LastActivity = lastActivity;
-            CurrentActivity = currentActivity;
+            Activities = activities;
         }
 
-        public bool CanDoActivity()
+        public override bool Equals(object? obj)
         {
-            TimeSpan cooldown = CurrentActivity.Type == TypeActivity.Surgery ? TimeSpan.FromHours(4) : TimeSpan.FromMinutes(20);
+            return obj is Doctor doctor &&
+                   Id.Equals(doctor.Id) &&
+                   CRM == doctor.CRM &&
+                   Name == doctor.Name &&
+                   LastActivity == doctor.LastActivity &&
+                   EqualityComparer<List<Activity>>.Default.Equals(Activities, doctor.Activities);
+        }
 
-            TimeSpan difference = DateTime.Now - LastActivity;
-
-            return difference >= cooldown;
+        public bool AreEqual(object? obj)
+        {
+            return obj is Doctor doctor &&
+                   CRM == doctor.CRM &&
+                   Name == doctor.Name &&
+                   LastActivity == doctor.LastActivity &&
+                   EqualityComparer<List<Activity>>.Default.Equals(Activities, doctor.Activities);
         }
     }
 }

@@ -82,6 +82,9 @@ namespace eAgendaMedica.Application.DoctorModule
             foreach (var error in validationResult.Errors)
                 errors.Add(new Error(error.ErrorMessage));
 
+            if (_doctorRepository.Exist(doctor))
+                errors.Add(new Error("Este médico já existe"));
+
             if (errors.Any())
                 return Result.Fail(errors);
 

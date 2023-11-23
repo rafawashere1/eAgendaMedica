@@ -16,5 +16,15 @@ namespace eAgendaMedica.Infra.Orm.ActivityModule
         {
             return await Registers.Include(x => x.Doctors).SingleOrDefaultAsync(x => x.Id == id);
         }
+
+        public override async Task<List<Activity>> GetAllAsync()
+        {
+            return await Registers.Include(x => x.Doctors).ToListAsync();
+        }
+
+        public override bool Exist(Activity obj, bool isRemove = false)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

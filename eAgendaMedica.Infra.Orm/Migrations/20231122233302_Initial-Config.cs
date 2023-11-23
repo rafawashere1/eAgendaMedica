@@ -36,33 +36,54 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CRM = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastActivity = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CurrentActivityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    LastActivity = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TBDoctor", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TBDoctor_TBActivity",
+                columns: table => new
+                {
+                    ActivitiesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DoctorsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TBDoctor_TBActivity", x => new { x.ActivitiesId, x.DoctorsId });
                     table.ForeignKey(
-                        name: "FK_TBDoctor_TBActivity",
-                        column: x => x.CurrentActivityId,
+                        name: "FK_TBDoctor_TBActivity_TBActivity_ActivitiesId",
+                        column: x => x.ActivitiesId,
                         principalTable: "TBActivity",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TBDoctor_TBActivity_TBDoctor_DoctorsId",
+                        column: x => x.DoctorsId,
+                        principalTable: "TBDoctor",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_TBDoctor_CurrentActivityId",
-                table: "TBDoctor",
-                column: "CurrentActivityId");
+                name: "IX_TBDoctor_TBActivity_DoctorsId",
+                table: "TBDoctor_TBActivity",
+                column: "DoctorsId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TBDoctor");
+                name: "TBDoctor_TBActivity");
 
             migrationBuilder.DropTable(
                 name: "TBActivity");
+
+            migrationBuilder.DropTable(
+                name: "TBDoctor");
         }
     }
 }

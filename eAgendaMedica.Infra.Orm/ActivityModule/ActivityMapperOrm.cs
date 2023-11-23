@@ -30,10 +30,10 @@ namespace eAgendaMedica.Infra.Orm.ActivityModule
                 .IsRequired();
 
             builder.HasMany(a => a.Doctors)
-               .WithOne(d => d.CurrentActivity)
-               .HasForeignKey(d => d.CurrentActivityId)
-               .HasConstraintName("FK_TBDoctor_TBActivity")
-               .OnDelete(DeleteBehavior.NoAction);
+               .WithMany(d => d.Activities)
+               .UsingEntity(x =>
+                    x.ToTable("TBDoctor_TBActivity")
+                );
         }
     }
 }
