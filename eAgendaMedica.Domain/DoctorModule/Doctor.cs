@@ -1,6 +1,5 @@
 ﻿using eAgendaMedica.Domain.ActivityModule;
 using eAgendaMedica.Domain.Shared;
-using System.Numerics;
 
 namespace eAgendaMedica.Domain.DoctorModule
 {

@@ -18,5 +18,17 @@ namespace eAgendaMedica.Domain.ActivityModule
         {
 
         }
+
+        public Activity(string title, TypeActivity type, DateTime startDay, DateTime endDay, TimeSpan startTime, TimeSpan endTime, List<Doctor>? doctors, string theme)
+        {
+            Title = title;
+            Type = type;
+            StartDay = startDay;
+            EndDay = endDay;
+            StartTime = startTime;
+            EndTime = endTime;
+            Doctors = doctors;
+            Theme = theme;
+        }
     }
 }
