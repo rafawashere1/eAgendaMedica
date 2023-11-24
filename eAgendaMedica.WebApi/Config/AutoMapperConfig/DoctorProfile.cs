@@ -15,8 +15,7 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
 
             CreateMap<Doctor, DoctorListViewModel>();
 
-            CreateMap<Doctor, DoctorDetailViewModel>()
-            .ForMember(d => d.LastActivity, opt => opt.MapFrom(o => o.LastActivity.ToShortDateString()));
+            CreateMap<Doctor, DoctorDetailViewModel>();
 
             CreateMap<Doctor, SelectedDoctorViewModel>();
         }

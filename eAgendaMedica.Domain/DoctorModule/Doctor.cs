@@ -7,7 +7,6 @@ namespace eAgendaMedica.Domain.DoctorModule
     {
         public string CRM { get; set; }
         public string Name { get; set; }
-        public DateTime LastActivity { get; set; }
         public List<Activity> Activities { get; set; }
 
         public Doctor()
@@ -15,11 +14,10 @@ namespace eAgendaMedica.Domain.DoctorModule
 
         }
 
-        public Doctor(string cRM, string name, DateTime lastActivity, List<Activity> activities)
+        public Doctor(string cRM, string name, List<Activity> activities)
         {
             CRM = cRM;
             Name = name;
-            LastActivity = lastActivity;
             Activities = activities;
         }
 
@@ -29,7 +27,6 @@ namespace eAgendaMedica.Domain.DoctorModule
                    Id.Equals(doctor.Id) &&
                    CRM == doctor.CRM &&
                    Name == doctor.Name &&
-                   LastActivity == doctor.LastActivity &&
                    EqualityComparer<List<Activity>>.Default.Equals(Activities, doctor.Activities);
         }
 
@@ -38,8 +35,70 @@ namespace eAgendaMedica.Domain.DoctorModule
             return obj is Doctor doctor &&
                    CRM == doctor.CRM &&
                    Name == doctor.Name &&
-                   LastActivity == doctor.LastActivity &&
                    EqualityComparer<List<Activity>>.Default.Equals(Activities, doctor.Activities);
+        }
+
+        public static bool CanDoActivity(Activity newActivity)
+        {
+            foreach (var doctor in newActivity.Doctors)
+            {
+                if (!doctor.HasSufficientRecoveryTime(newActivity))
+                {
+                    return false;
+                }
+
+                if (doctor.HasScheduleConflict(newActivity))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool HasScheduleConflict(Activity newActivity)
+        {
+            if (Activities != null)
+            {
+                foreach (var activity in Activities)
+                {
+                    if (IsScheduleConflict(activity, newActivity))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool HasSufficientRecoveryTime(Activity newActivity)
+        {
+            if (Activities != null && Activities.Any())
+            {
+                foreach (var activity in Activities)
+                {
+                    var recoveryTime = GetRecoveryTime(activity.Type);
+
+                    if (activity.EndDay.Add(recoveryTime) > newActivity.StartDay)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        private static bool IsScheduleConflict(Activity existingActivity, Activity newActivity)
+        {
+            return (existingActivity.StartDay < newActivity.EndDay) &&
+                   (existingActivity.EndDay > newActivity.StartDay);
+        }
+
+        private static TimeSpan GetRecoveryTime(TypeActivity activityType)
+        {
+            return activityType == TypeActivity.Surgery ? TimeSpan.FromHours(4) : TimeSpan.FromMinutes(20);
         }
     }
 }

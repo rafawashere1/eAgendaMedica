@@ -19,9 +19,6 @@ namespace eAgendaMedica.Infra.Orm.DoctorModule
             builder.Property(x => x.Name)
                 .IsRequired();
 
-            builder.Property(x => x.LastActivity)
-                .IsRequired();
-
             builder.HasMany(d => d.Activities);
         }
     }

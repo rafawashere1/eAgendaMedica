@@ -18,7 +18,7 @@ namespace eAgendaMedica.Tests.Domain.DoctorModule
             TimeSpan.FromHours(12), new List<Doctor>(), "primary");
             var activities = new List<Activity> { activity };
 
-            _doctor = new Doctor("12345-RS", "Rafael", DateTime.Now, activities);
+            _doctor = new Doctor("12345-RS", "Rafael", activities);
         }
 
         [TestMethod]

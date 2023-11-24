@@ -30,5 +30,11 @@ namespace eAgendaMedica.Domain.ActivityModule
             Doctors = doctors;
             Theme = theme;
         }
+
+        public static void SetDays(Activity activity)
+        {
+            activity.StartDay = activity.StartDay.Date.Add(activity.StartTime);
+            activity.EndDay = activity.EndDay.Date.Add(activity.EndTime);
+        }
     }
 }

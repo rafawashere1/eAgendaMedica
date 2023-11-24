@@ -56,6 +56,19 @@ namespace eAgendaMedica.WebApi.Controllers
             });
         }
 
+        [HttpGet("top-10-workers/{id}")]
+        [ProducesResponseType(typeof(DoctorDetailViewModel), 200)]
+        [ProducesResponseType(typeof(string[]), 404)]
+        [ProducesResponseType(typeof(string[]), 500)]
+        public async Task<IActionResult> GetTop10Workers()
+        {
+            var doctorsResult = await _doctorService.GetAllAsync();
+
+            var viewModel = _mapper.Map<List<DoctorListViewModel>>(doctorsResult.Value);
+
+            return Ok(viewModel);
+        }
+
         [HttpGet("full-visualization/{id}")]
         [ProducesResponseType(typeof(DoctorDetailViewModel), 200)]
         [ProducesResponseType(typeof(string[]), 404)]

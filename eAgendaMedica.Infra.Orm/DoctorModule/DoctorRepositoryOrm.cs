@@ -18,7 +18,7 @@ namespace eAgendaMedica.Infra.Orm.DoctorModule
                 return new List<Doctor>();
             }
 
-            return Registers.Where(doctor => doctorsIds.Contains(doctor.Id)).ToList();
+            return Registers.Include(x => x.Activities).Where(doctor => doctorsIds.Contains(doctor.Id)).ToList();
         }
 
         public override async Task<Doctor?> GetByIdAsync(Guid id)

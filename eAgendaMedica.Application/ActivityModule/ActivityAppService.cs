@@ -23,6 +23,7 @@ namespace eAgendaMedica.Application.ActivityModule
             if (validationResult.IsFailed)
                 return Result.Fail(validationResult.Errors);
 
+
             await _activityRepository.AddAsync(activity);
 
             await _persistenceContext.SaveAsync();
@@ -78,10 +79,15 @@ namespace eAgendaMedica.Application.ActivityModule
 
             var validationResult = validator.Validate(activity);
 
+            Activity.SetDays(activity);
+
             List<Error> errors = new();
 
             foreach (var error in validationResult.Errors)
                 errors.Add(new Error(error.ErrorMessage));
+
+            if (!Doctor.CanDoActivity(activity))
+                errors.Add(new Error("Tempo de descanso insuficiente ou conflito de agenda"));
 
             if (errors.Any())
                 return Result.Fail(errors);

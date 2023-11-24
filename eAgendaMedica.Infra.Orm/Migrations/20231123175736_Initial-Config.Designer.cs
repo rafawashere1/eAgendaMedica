@@ -12,7 +12,7 @@ using eAgendaMedica.Infra.Orm.Shared;
 namespace eAgendaMedica.Infra.Orm.Migrations
 {
     [DbContext(typeof(eAgendaMedicaDbContext))]
-    [Migration("20231122233302_Initial-Config")]
+    [Migration("20231123175736_Initial-Config")]
     partial class InitialConfig
     {
         /// <inheritdoc />
@@ -81,9 +81,6 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                     b.Property<string>("CRM")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("LastActivity")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()

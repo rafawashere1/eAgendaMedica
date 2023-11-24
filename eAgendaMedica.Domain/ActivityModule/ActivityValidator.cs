@@ -13,15 +13,15 @@ namespace eAgendaMedica.Domain.ActivityModule
             .NotEmpty().WithMessage("O Dia de Início deve ser fornecido.");
 
             RuleFor(activity => activity.EndDay)
-                .NotEmpty().WithMessage("O Dia de Térnino deve ser fornecido.")
+                .NotEmpty().WithMessage("O Dia de Término deve ser fornecido.")
                 .GreaterThanOrEqualTo(activity => activity.StartDay)
                 .WithMessage("O dia de término deve ser igual ou maior que o dia de início");
 
             RuleFor(a => a.StartTime)
-                .NotEmpty().WithMessage("A hora de início da atividade deve ser fornecida.");
+                .NotNull().WithMessage("A hora de início da atividade deve ser fornecida.");
 
             RuleFor(a => a.EndTime)
-                .NotEmpty().WithMessage("A hora de término da atividade deve ser fornecida.");
+                .NotNull().WithMessage("A hora de término da atividade deve ser fornecida.");
 
             RuleFor(a => a.StartTime)
                 .LessThan(a => a.EndTime).WithMessage("A hora de início deve ser antes da hora de término.");

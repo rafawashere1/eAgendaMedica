@@ -17,8 +17,7 @@ namespace eAgendaMedica.Tests.Domain.AcitivityModule
             var doctor = new Doctor
             {
                 CRM = "23347-SP",
-                Name = "Dr Exemplo4",
-                LastActivity = DateTime.Now
+                Name = "Dr Exemplo4"
             };
             var doctors = new List<Doctor> { doctor };
 
