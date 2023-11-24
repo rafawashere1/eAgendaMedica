@@ -7,8 +7,7 @@ namespace eAgendaMedica.WebApi.ViewModels.DoctorModule
         public Guid Id { get; set; }
         public string CRM { get; set; }
         public string Name { get; set; }
-        public DateTime LastActivity { get; set; }
-        public ActivityListViewModel CurrentActivity { get; set; }
-        public Guid CurrentActivityId { get; set; }
+        public List<ActivityListViewModel> Activities { get; set; }
+        public TimeSpan WorkedHours { get; set; }
     }
 }

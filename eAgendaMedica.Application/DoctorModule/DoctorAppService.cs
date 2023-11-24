@@ -61,7 +61,7 @@ namespace eAgendaMedica.Application.DoctorModule
         {
             var doctors = await _doctorRepository.GetAllAsync();
 
-            return Result.Ok(doctors);
+            return Result.Ok(Doctor.CalculateHoursWorked(doctors));
         }
 
         public async Task<Result<Doctor>> GetByIdAsync(Guid id)

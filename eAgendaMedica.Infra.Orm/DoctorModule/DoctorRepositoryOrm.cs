@@ -36,7 +36,7 @@ namespace eAgendaMedica.Infra.Orm.DoctorModule
             if (isRemove)
                 return Registers.Contains(doctor);
 
-            return Registers.ToList().Any(a => a.CRM == doctor.CRM);
+            return Registers.ToList().Any(a => a.CRM == doctor.CRM && a.Id != doctor.Id);
         }
     }
 }

@@ -56,7 +56,7 @@ namespace eAgendaMedica.WebApi.Controllers
             });
         }
 
-        [HttpGet("top-10-workers/{id}")]
+        [HttpGet("top-10-workers")]
         [ProducesResponseType(typeof(DoctorDetailViewModel), 200)]
         [ProducesResponseType(typeof(string[]), 404)]
         [ProducesResponseType(typeof(string[]), 500)]

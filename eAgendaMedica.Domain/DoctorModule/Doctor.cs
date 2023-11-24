@@ -1,5 +1,6 @@
 ﻿using eAgendaMedica.Domain.ActivityModule;
 using eAgendaMedica.Domain.Shared;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eAgendaMedica.Domain.DoctorModule
 {
@@ -8,6 +9,9 @@ namespace eAgendaMedica.Domain.DoctorModule
         public string CRM { get; set; }
         public string Name { get; set; }
         public List<Activity> Activities { get; set; }
+
+        [NotMapped]
+        public TimeSpan WorkedHours { get; set; }
 
         public Doctor()
         {
@@ -36,6 +40,24 @@ namespace eAgendaMedica.Domain.DoctorModule
                    CRM == doctor.CRM &&
                    Name == doctor.Name &&
                    EqualityComparer<List<Activity>>.Default.Equals(Activities, doctor.Activities);
+        }
+
+        public static List<Doctor> CalculateHoursWorked(List<Doctor> doctors)
+        {
+            foreach (var doctor in doctors)
+            {
+                foreach (var activity in doctor.Activities)
+                {
+                    TimeSpan duration = activity.EndDay - activity.StartDay;
+
+                    doctor.WorkedHours += duration;
+                }
+            }
+
+            return doctors.OrderByDescending(d => d.WorkedHours)
+                          .ThenBy(d => d.WorkedHours == TimeSpan.Zero)
+                          .Take(10)
+                          .ToList();
         }
 
         public static bool CanDoActivity(Activity newActivity)
