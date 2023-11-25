@@ -22,6 +22,8 @@ namespace eAgendaMedica.WebApi.Config.Extensions
                 optionsBulder.UseSqlServer(connectionString);
             });
 
+            services.AddTransient<ITenantProvider, TenantProvider>();
+
             services.AddTransient<IDoctorRepository, DoctorRepositoryOrm>();
             services.AddTransient<DoctorAppService>();
 
@@ -29,7 +31,6 @@ namespace eAgendaMedica.WebApi.Config.Extensions
             services.AddTransient<ActivityAppService>();
 
             services.AddTransient<ConfigureActivityMappingAction>();
-
         }
     }
 }

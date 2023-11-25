@@ -3,6 +3,7 @@ using eAgendaMedica.Domain.DoctorModule;
 using eAgendaMedica.Infra.Orm.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Taikandi;
 using Activity = eAgendaMedica.Domain.ActivityModule.Activity;
 
 namespace eAgendaMedica.ConsoleApp
@@ -11,6 +12,24 @@ namespace eAgendaMedica.ConsoleApp
     {
         static void Main(string[] args)
         {
+            Guid guid1 = Guid.NewGuid();
+            Guid guid2 = Guid.NewGuid();
+            Guid guid3 = Guid.NewGuid();
+
+            // Display the generated GUIDs
+            Console.WriteLine($"Guid 1: {guid1}");
+            Console.WriteLine($"Guid 2: {guid2}");
+            Console.WriteLine($"Guid 3: {guid3}");
+
+            Guid sequentialGuid1 = SequentialGuid.NewGuid();
+            Guid sequentialGuid2 = SequentialGuid.NewGuid();
+            Guid sequentialGuid3 = SequentialGuid.NewGuid();
+
+            // Display the generated sequential GUIDs
+            Console.WriteLine($"Sequential Guid 1: {sequentialGuid1}");
+            Console.WriteLine($"Sequential Guid 2: {sequentialGuid2}");
+            Console.WriteLine($"Sequential Guid 3: {sequentialGuid3}");
+
             var doctor = new Doctor
             {
                 CRM = "23347-SP",

@@ -6,6 +6,8 @@ namespace eAgendaMedica.WebApi
 {
     public class Program
     {
+        static readonly string nameCors = "Development";
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -17,13 +19,14 @@ namespace eAgendaMedica.WebApi
 
             // Add services to the container.
 
+            builder.Services.ConfigureIdentity();
             builder.Services.ConfigureSerilog(builder.Logging);
-            builder.Services.ConfigureControllers();
-            builder.Services.ConfigureDependencyInjection(builder.Configuration);
             builder.Services.ConfigureAutoMapper();
-
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.ConfigureDependencyInjection(builder.Configuration);
             builder.Services.ConfigureSwagger();
+            builder.Services.ConfigureControllers();
+            builder.Services.ConfigureJwt();
+            builder.Services.ConfigureCors(nameCors);
 
             var app = builder.Build();
 
@@ -35,12 +38,11 @@ namespace eAgendaMedica.WebApi
                 app.UseSwaggerUI();
             }
 
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-
             app.UseHttpsRedirection();
+
+            app.UseCors(nameCors);
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

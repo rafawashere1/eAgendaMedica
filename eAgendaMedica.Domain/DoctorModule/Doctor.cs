@@ -1,4 +1,5 @@
 ﻿using eAgendaMedica.Domain.ActivityModule;
+using eAgendaMedica.Domain.AuthModule;
 using eAgendaMedica.Domain.Shared;
 using System.ComponentModel.DataAnnotations.Schema;
 

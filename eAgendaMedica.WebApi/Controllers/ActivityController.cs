@@ -1,13 +1,16 @@
 ﻿using AutoMapper;
 using eAgendaMedica.Application.ActivityModule;
 using eAgendaMedica.Domain.ActivityModule;
+using eAgendaMedica.WebApi.Shared;
 using eAgendaMedica.WebApi.ViewModels.ActivityModule;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eAgendaMedica.WebApi.Controllers
 {
     [Route("api/activities")]
     [ApiController]
+    [Authorize]
     public class ActivityController : ApiControllerBase
     {
         private readonly ActivityAppService _activityService;

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using eAgendaMedica.WebApi.Config.AutoMapperConfig;
+﻿using eAgendaMedica.WebApi.Config.AutoMapperConfig;
 
 namespace eAgendaMedica.WebApi.Config.Extensions
 {
@@ -11,8 +10,10 @@ namespace eAgendaMedica.WebApi.Config.Extensions
             {
                 opt.AddProfile<DoctorProfile>();
                 opt.AddProfile<ActivityProfile>();
-
+                opt.AddProfile<UserProfile>();
             });
+
+            services.AddTransient<UserResolver>();
         }
     }
 }

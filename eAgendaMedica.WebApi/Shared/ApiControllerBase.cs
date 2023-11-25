@@ -1,7 +1,7 @@
 ﻿using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace eAgendaMedica.WebApi.Controllers
+namespace eAgendaMedica.WebApi.Shared
 {
     public class ApiControllerBase : ControllerBase
     {

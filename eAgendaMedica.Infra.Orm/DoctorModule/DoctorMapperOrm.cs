@@ -1,6 +1,7 @@
 ﻿using eAgendaMedica.Domain.DoctorModule;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Emit;
 
 namespace eAgendaMedica.Infra.Orm.DoctorModule
 {
@@ -19,7 +20,14 @@ namespace eAgendaMedica.Infra.Orm.DoctorModule
             builder.Property(x => x.Name)
                 .IsRequired();
 
-            builder.HasMany(d => d.Activities);
+            builder.HasMany(d => d.Activities)
+            .WithMany(a => a.Doctors);
+
+            builder.HasOne(x => x.User)
+            .WithMany()
+            .IsRequired()
+            .HasForeignKey(x => x.UserId)
+            .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

@@ -1,13 +1,16 @@
 ﻿using AutoMapper;
 using eAgendaMedica.Application.DoctorModule;
 using eAgendaMedica.Domain.DoctorModule;
+using eAgendaMedica.WebApi.Shared;
 using eAgendaMedica.WebApi.ViewModels.DoctorModule;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eAgendaMedica.WebApi.Controllers
 {
     [Route("api/doctors")]
     [ApiController]
+    [Authorize]
     public class DoctorController : ApiControllerBase
     {
         private readonly DoctorAppService _doctorService;
@@ -22,38 +25,13 @@ namespace eAgendaMedica.WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(List<DoctorListViewModel>), 200)]
         [ProducesResponseType(typeof(string[]), 500)]
-        public async Task<IActionResult> GetAll(int page = 1, int itemsPerPage = 10)
+        public async Task<IActionResult> GetAll()
         {
             var doctorsResult = await _doctorService.GetAllAsync();
 
-            var totalItems = doctorsResult.Value.Count;
-            var totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
+            var viewModel = _mapper.Map<List<DoctorListViewModel>>(doctorsResult.Value);
 
-            if (page < 1 || page > totalPages)
-            {
-                return BadRequest("Invalid page number.");
-            }
-
-            var pagedDoctors = doctorsResult.Value
-                .Skip((page - 1) * itemsPerPage)
-                .Take(itemsPerPage);
-
-            var viewModel = _mapper.Map<List<DoctorListViewModel>>(pagedDoctors);
-
-            var paginationInfo = new
-            {
-                TotalItems = totalItems,
-                TotalPages = totalPages,
-                Page = page,
-                ItemsPerPage = itemsPerPage
-            };
-
-            return StatusCode(200, new
-            {
-                Success = true,
-                Data = viewModel,
-                Pagination = paginationInfo
-            });
+            return Ok(viewModel);
         }
 
         [HttpGet("top-10-workers")]

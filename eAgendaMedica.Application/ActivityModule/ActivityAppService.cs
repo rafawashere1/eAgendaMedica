@@ -73,7 +73,7 @@ namespace eAgendaMedica.Application.ActivityModule
             return Result.Ok(activities);
         }
 
-        private Result ValidateActivity(Activity activity)
+        private static Result ValidateActivity(Activity activity)
         {
             var validator = new ActivityValidator();
 

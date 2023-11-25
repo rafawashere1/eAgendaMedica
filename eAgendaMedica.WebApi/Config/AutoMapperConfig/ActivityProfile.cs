@@ -11,7 +11,7 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
         public ActivityProfile()
         {
             CreateMap<ActivityFormsViewModel, Activity>()
-            .ForMember(dest => dest.Doctors, opt => opt.Ignore())
+            .ForMember(dest => dest.UserId, opt => opt.MapFrom<UserResolver>())
             .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => src.StartTime.ToString(@"hh\:mm")))
             .ForMember(dest => dest.EndTime, opt => opt.MapFrom(src => src.EndTime.ToString(@"hh\:mm")))
             .AfterMap<ConfigureActivityMappingAction>();

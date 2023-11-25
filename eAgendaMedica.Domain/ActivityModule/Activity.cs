@@ -1,4 +1,5 @@
-﻿using eAgendaMedica.Domain.DoctorModule;
+﻿using eAgendaMedica.Domain.AuthModule;
+using eAgendaMedica.Domain.DoctorModule;
 using eAgendaMedica.Domain.Shared;
 
 namespace eAgendaMedica.Domain.ActivityModule

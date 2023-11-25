@@ -9,7 +9,8 @@ namespace eAgendaMedica.WebApi.Config.AutoMapperConfig
         public DoctorProfile()
         {
             CreateMap<DoctorFormsViewModel, Doctor>()
-            .ForMember(d => d.Activities, opt => opt.Ignore());
+            .ForMember(dest => dest.Activities, opt => opt.Ignore())
+            .ForMember(dest => dest.UserId, opt => opt.MapFrom<UserResolver>());
 
             CreateMap<Doctor, DoctorFormsViewModel>();
 
