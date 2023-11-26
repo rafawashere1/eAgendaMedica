@@ -1,4 +1,5 @@
-﻿using eAgendaMedica.Domain.DoctorModule;
+﻿using eAgendaMedica.Domain.ActivityModule;
+using eAgendaMedica.Domain.DoctorModule;
 using eAgendaMedica.Domain.Shared;
 using FluentResults;
 
@@ -7,11 +8,13 @@ namespace eAgendaMedica.Application.DoctorModule
     public class DoctorAppService
     {
         private readonly IDoctorRepository _doctorRepository;
+        private readonly IActivityRepository _activityRepository;
         private readonly IPersistenceContext _persistenceContext;
 
-        public DoctorAppService(IDoctorRepository doctorRepository, IPersistenceContext persistenceContext)
+        public DoctorAppService(IDoctorRepository doctorRepository, IActivityRepository activityRepository, IPersistenceContext persistenceContext)
         {
             _doctorRepository = doctorRepository;
+            _activityRepository = activityRepository;
             _persistenceContext = persistenceContext;
         }
 
@@ -49,6 +52,9 @@ namespace eAgendaMedica.Application.DoctorModule
 
             if (doctor == null)
                 return Result.Fail($"Médico {id} não encontrado");
+
+            if (VerifyRelationshipWithActivities(doctor, _activityRepository.GetAll()))
+                return Result.Fail($"Médico {doctor.Name} está com uma atividade agendada.");
 
             _doctorRepository.Remove(doctor);
 
@@ -89,6 +95,11 @@ namespace eAgendaMedica.Application.DoctorModule
                 return Result.Fail(errors);
 
             return Result.Ok();
+        }
+
+        public bool VerifyRelationshipWithActivities(Doctor doctor, List<Activity> activities)
+        {
+            return activities.Any(a => a.Doctors.Contains(doctor));
         }
     }
 }

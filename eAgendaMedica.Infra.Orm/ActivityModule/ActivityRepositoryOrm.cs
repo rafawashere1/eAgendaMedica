@@ -22,6 +22,11 @@ namespace eAgendaMedica.Infra.Orm.ActivityModule
             return await Registers.Include(x => x.Doctors).ToListAsync();
         }
 
+        public override List<Activity> GetAll()
+        {
+            return Registers.Include(x => x.Doctors).ToList();
+        }
+
         public override bool Exist(Activity obj, bool isRemove = false)
         {
             throw new NotImplementedException();

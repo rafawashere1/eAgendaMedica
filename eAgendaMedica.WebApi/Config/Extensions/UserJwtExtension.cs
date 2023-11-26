@@ -11,6 +11,9 @@ namespace eAgendaMedica.WebApi.Config.Extensions
     {
         public static TokenViewModel GenerateJwt(this User user, DateTime expirationDate)
         {
+            if (user == null)
+                return null;
+
             string keyToken = CreateKeyToken(user, expirationDate);
 
             var token = new TokenViewModel
@@ -50,6 +53,9 @@ namespace eAgendaMedica.WebApi.Config.Extensions
 
         private static ClaimsIdentity GetIdentityClaims(User user)
         {
+            if (user == null)
+                return null;
+
             var identityClaims = new ClaimsIdentity();
 
             identityClaims.AddClaim(new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()));

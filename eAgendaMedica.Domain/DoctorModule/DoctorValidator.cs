@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using eAgendaMedica.Domain.ActivityModule;
+using FluentValidation;
+using System.Text.RegularExpressions;
 
 namespace eAgendaMedica.Domain.DoctorModule
 {

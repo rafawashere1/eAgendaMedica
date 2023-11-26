@@ -27,7 +27,12 @@ namespace eAgendaMedica.WebApi.Shared
 
         public override BadRequestObjectResult BadRequest(object? value)
         {
-            var errorMessages = ((IList<IError>)value).Select(x => x.Message);
+            List<IError> errors = new()
+            {
+                new Error(value.ToString())
+            };
+
+            var errorMessages = errors.Select(x => x.Message);
 
             return base.BadRequest(new
             {

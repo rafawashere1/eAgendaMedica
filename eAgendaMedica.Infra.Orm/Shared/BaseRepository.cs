@@ -46,6 +46,11 @@ namespace eAgendaMedica.Infra.Orm.Shared
             return await Registers.ToListAsync();
         }
 
+        public virtual List<T> GetAll()
+        {
+            return Registers.ToList();
+        }
+
         public abstract bool Exist(T obj, bool isRemove = false);
     }
 }
