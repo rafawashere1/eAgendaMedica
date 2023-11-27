@@ -59,13 +59,13 @@ namespace eAgendaMedica.Infra.Orm.ActivityModule
                 UserId = userId
             };
 
-            var activity4 = new Activity("Cirurgia Cardíaca", TypeActivity.Surgery, new DateTime(2023, 11, 26), new DateTime(2023, 11, 26), new TimeSpan(11, 0, 0),
-                new TimeSpan(11, 30, 0), "accent")
+            var activity4 = new Activity("Cirurgia Cardíaca", TypeActivity.Surgery, new DateTime(2023, 11, 27), new DateTime(2023, 11, 27), new TimeSpan(13, 0, 0),
+                new TimeSpan(14, 00, 0), "accent")
             {
                 UserId = userId
             };
 
-            var activity5 = new Activity("Cirurgia de Emergência", TypeActivity.Surgery, new DateTime(2023, 11, 26), new DateTime(2023, 11, 26), new TimeSpan(11, 0, 0),
+            var activity5 = new Activity("Cirurgia de Emergência", TypeActivity.Surgery, new DateTime(2023, 11, 28), new DateTime(2023, 11, 28), new TimeSpan(11, 0, 0),
                 new TimeSpan(11, 30, 0), "warn")
             {
                 UserId = userId
