@@ -91,6 +91,11 @@ namespace eAgendaMedica.Domain.DoctorModule
             {
                 foreach (var activity in Activities)
                 {
+                    if (activity == newActivity)
+                    {
+                        continue;
+                    }
+
                     if (IsScheduleConflict(activity, newActivity))
                     {
                         return true;
@@ -107,6 +112,11 @@ namespace eAgendaMedica.Domain.DoctorModule
             {
                 foreach (var activity in Activities)
                 {
+                    if (activity == newActivity)
+                    {
+                        continue;
+                    }
+
                     var recoveryTime = GetRecoveryTime(activity.Type);
 
                     if (activity.EndDay.Add(recoveryTime) > newActivity.StartDay)
