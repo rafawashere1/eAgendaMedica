@@ -62,7 +62,7 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ed18f0f2-b77f-4334-8afd-f3285372afb5"),
+                            Id = new Guid("0b74e0df-dc5c-4810-8243-1357237c64ad"),
                             EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndTime = new TimeSpan(0, 10, 30, 0, 0),
                             StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -74,7 +74,7 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                         },
                         new
                         {
-                            Id = new Guid("53c58b57-22a6-4df7-b824-5850b621f694"),
+                            Id = new Guid("7c82bf9f-a09a-4c70-9489-6a342dc606d9"),
                             EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndTime = new TimeSpan(0, 11, 30, 0, 0),
                             StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -86,7 +86,7 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                         },
                         new
                         {
-                            Id = new Guid("52c39088-1fb2-4b77-a99d-9cce46250435"),
+                            Id = new Guid("3fadc39c-2710-4600-a204-fb72df9b252f"),
                             EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndTime = new TimeSpan(0, 12, 30, 0, 0),
                             StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -98,26 +98,26 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a0d0323d-88a7-4cfe-ac8d-a022a4a344c1"),
+                            Id = new Guid("758c8c63-1a18-4db3-b3e4-2b4dec8add6a"),
                             EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndTime = new TimeSpan(0, 11, 30, 0, 0),
                             StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StartTime = new TimeSpan(0, 11, 0, 0, 0),
                             Theme = "accent",
                             Title = "Cirurgia Cardíaca",
-                            Type = 1,
+                            Type = 0,
                             UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
                         },
                         new
                         {
-                            Id = new Guid("c48c5134-cb2b-4b05-8a4f-3a163068a3c3"),
+                            Id = new Guid("b07c1564-2d23-49e2-a7da-e7c5a2327b4a"),
                             EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndTime = new TimeSpan(0, 11, 30, 0, 0),
                             StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             StartTime = new TimeSpan(0, 11, 0, 0, 0),
                             Theme = "warn",
                             Title = "Cirurgia de Emergência",
-                            Type = 1,
+                            Type = 0,
                             UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
                         });
                 });
@@ -419,27 +419,27 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                     b.HasData(
                         new
                         {
-                            ActivityId = new Guid("ed18f0f2-b77f-4334-8afd-f3285372afb5"),
+                            ActivityId = new Guid("0b74e0df-dc5c-4810-8243-1357237c64ad"),
                             DoctorId = new Guid("6f095f41-5503-42a2-8412-8d2bb95c0042")
                         },
                         new
                         {
-                            ActivityId = new Guid("53c58b57-22a6-4df7-b824-5850b621f694"),
+                            ActivityId = new Guid("7c82bf9f-a09a-4c70-9489-6a342dc606d9"),
                             DoctorId = new Guid("1cc3bb32-627c-4e79-9f4a-3fbff06bbbdf")
                         },
                         new
                         {
-                            ActivityId = new Guid("52c39088-1fb2-4b77-a99d-9cce46250435"),
+                            ActivityId = new Guid("3fadc39c-2710-4600-a204-fb72df9b252f"),
                             DoctorId = new Guid("6275b95e-03e9-4213-9303-f0745608f706")
                         },
                         new
                         {
-                            ActivityId = new Guid("a0d0323d-88a7-4cfe-ac8d-a022a4a344c1"),
+                            ActivityId = new Guid("758c8c63-1a18-4db3-b3e4-2b4dec8add6a"),
                             DoctorId = new Guid("c20e745a-da4c-4f8f-9f8f-7d5c74cafb6f")
                         },
                         new
                         {
-                            ActivityId = new Guid("c48c5134-cb2b-4b05-8a4f-3a163068a3c3"),
+                            ActivityId = new Guid("b07c1564-2d23-49e2-a7da-e7c5a2327b4a"),
                             DoctorId = new Guid("ad42d17f-9f8d-4f5b-983e-6ad44906b347")
                         });
                 });

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -232,11 +231,11 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                 columns: new[] { "Id", "EndDay", "EndTime", "StartDay", "StartTime", "Theme", "Title", "Type", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("52c39088-1fb2-4b77-a99d-9cce46250435"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 12, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 12, 0, 0, 0), "primary", "Exame de Sangue", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
-                    { new Guid("53c58b57-22a6-4df7-b824-5850b621f694"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 0, 0, 0), "primary", "Checkup", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
-                    { new Guid("a0d0323d-88a7-4cfe-ac8d-a022a4a344c1"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 0, 0, 0), "accent", "Cirurgia Cardíaca", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
-                    { new Guid("c48c5134-cb2b-4b05-8a4f-3a163068a3c3"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 0, 0, 0), "warn", "Cirurgia de Emergência", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
-                    { new Guid("ed18f0f2-b77f-4334-8afd-f3285372afb5"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 10, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 10, 0, 0, 0), "primary", "Consulta Geral", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") }
+                    { new Guid("0b74e0df-dc5c-4810-8243-1357237c64ad"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 10, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 10, 0, 0, 0), "primary", "Consulta Geral", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("3fadc39c-2710-4600-a204-fb72df9b252f"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 12, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 12, 0, 0, 0), "primary", "Exame de Sangue", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("758c8c63-1a18-4db3-b3e4-2b4dec8add6a"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 0, 0, 0), "accent", "Cirurgia Cardíaca", 0, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("7c82bf9f-a09a-4c70-9489-6a342dc606d9"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 0, 0, 0), "primary", "Checkup", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("b07c1564-2d23-49e2-a7da-e7c5a2327b4a"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 0, 0, 0), "warn", "Cirurgia de Emergência", 0, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") }
                 });
 
             migrationBuilder.InsertData(
@@ -256,11 +255,11 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                 columns: new[] { "ActivityId", "DoctorId" },
                 values: new object[,]
                 {
-                    { new Guid("52c39088-1fb2-4b77-a99d-9cce46250435"), new Guid("6275b95e-03e9-4213-9303-f0745608f706") },
-                    { new Guid("53c58b57-22a6-4df7-b824-5850b621f694"), new Guid("1cc3bb32-627c-4e79-9f4a-3fbff06bbbdf") },
-                    { new Guid("a0d0323d-88a7-4cfe-ac8d-a022a4a344c1"), new Guid("c20e745a-da4c-4f8f-9f8f-7d5c74cafb6f") },
-                    { new Guid("c48c5134-cb2b-4b05-8a4f-3a163068a3c3"), new Guid("ad42d17f-9f8d-4f5b-983e-6ad44906b347") },
-                    { new Guid("ed18f0f2-b77f-4334-8afd-f3285372afb5"), new Guid("6f095f41-5503-42a2-8412-8d2bb95c0042") }
+                    { new Guid("0b74e0df-dc5c-4810-8243-1357237c64ad"), new Guid("6f095f41-5503-42a2-8412-8d2bb95c0042") },
+                    { new Guid("3fadc39c-2710-4600-a204-fb72df9b252f"), new Guid("6275b95e-03e9-4213-9303-f0745608f706") },
+                    { new Guid("758c8c63-1a18-4db3-b3e4-2b4dec8add6a"), new Guid("c20e745a-da4c-4f8f-9f8f-7d5c74cafb6f") },
+                    { new Guid("7c82bf9f-a09a-4c70-9489-6a342dc606d9"), new Guid("1cc3bb32-627c-4e79-9f4a-3fbff06bbbdf") },
+                    { new Guid("b07c1564-2d23-49e2-a7da-e7c5a2327b4a"), new Guid("ad42d17f-9f8d-4f5b-983e-6ad44906b347") }
                 });
 
             migrationBuilder.CreateIndex(

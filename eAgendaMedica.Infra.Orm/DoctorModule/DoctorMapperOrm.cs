@@ -19,6 +19,9 @@ namespace eAgendaMedica.Infra.Orm.DoctorModule
             builder.Property(x => x.Name)
                 .IsRequired();
 
+            builder.HasMany(x => x.Activities)
+                .WithMany(x => x.Doctors);
+
             builder.HasOne(x => x.User)
             .WithMany()
             .IsRequired()
