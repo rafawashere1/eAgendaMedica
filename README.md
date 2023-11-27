@@ -23,7 +23,10 @@ O projeto **e-AGENDA MÉDICA** é uma aplicação web desenvolvida para gerencia
 
 ## Dados Iniciais
 
-- *Descrição:* O aplicativo permite a definição de dados iniciais, como informações sobre os médicos e algumas atividades atribuídas.
+- **Descrição:** O aplicativo já contém dados iniciais para testes, como informações sobre os médicos e algumas atividades atribuídas.
+- **Para usar os dados iniciais, utilize a conta de testes para login:**
+  - **Nome de usuário:** testes@gmail.com
+  - **Senha:** Teste@123
 
 ## Tecnologias Utilizadas
 
