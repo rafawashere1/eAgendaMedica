@@ -46,7 +46,7 @@ namespace eAgendaMedica.WebApi.Controllers
                 return BadRequest(userResult.Errors);
 
             var user = userResult.Value;
-            
+
             if (user == null)
                 return BadRequest("O login ou a senha estão incorretas");
 

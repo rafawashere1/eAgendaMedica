@@ -15,6 +15,11 @@ namespace eAgendaMedica.Infra.Orm.Shared
             Registers = DbContext.Set<T>();
         }
 
+        public void Add(T register)
+        {
+            Registers.Add(register);
+        }
+
         public async Task<bool> AddAsync(T register)
         {
             await Registers.AddAsync(register);

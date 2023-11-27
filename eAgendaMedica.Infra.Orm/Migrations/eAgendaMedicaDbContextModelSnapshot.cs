@@ -58,6 +58,68 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("TBActivity", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ed18f0f2-b77f-4334-8afd-f3285372afb5"),
+                            EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new TimeSpan(0, 10, 30, 0, 0),
+                            StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new TimeSpan(0, 10, 0, 0, 0),
+                            Theme = "primary",
+                            Title = "Consulta Geral",
+                            Type = 1,
+                            UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
+                        },
+                        new
+                        {
+                            Id = new Guid("53c58b57-22a6-4df7-b824-5850b621f694"),
+                            EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new TimeSpan(0, 11, 30, 0, 0),
+                            StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new TimeSpan(0, 11, 0, 0, 0),
+                            Theme = "primary",
+                            Title = "Checkup",
+                            Type = 1,
+                            UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
+                        },
+                        new
+                        {
+                            Id = new Guid("52c39088-1fb2-4b77-a99d-9cce46250435"),
+                            EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new TimeSpan(0, 12, 30, 0, 0),
+                            StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new TimeSpan(0, 12, 0, 0, 0),
+                            Theme = "primary",
+                            Title = "Exame de Sangue",
+                            Type = 1,
+                            UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
+                        },
+                        new
+                        {
+                            Id = new Guid("a0d0323d-88a7-4cfe-ac8d-a022a4a344c1"),
+                            EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new TimeSpan(0, 11, 30, 0, 0),
+                            StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new TimeSpan(0, 11, 0, 0, 0),
+                            Theme = "accent",
+                            Title = "Cirurgia Cardíaca",
+                            Type = 1,
+                            UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
+                        },
+                        new
+                        {
+                            Id = new Guid("c48c5134-cb2b-4b05-8a4f-3a163068a3c3"),
+                            EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new TimeSpan(0, 11, 30, 0, 0),
+                            StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new TimeSpan(0, 11, 0, 0, 0),
+                            Theme = "warn",
+                            Title = "Cirurgia de Emergência",
+                            Type = 1,
+                            UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
+                        });
                 });
 
             modelBuilder.Entity("eAgendaMedica.Domain.AuthModule.User", b =>
@@ -128,6 +190,25 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e7944276-5214-46c7-2755-08dbede3db7d"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "6f07bdcf-9ff3-43da-9f8b-5e27808f81ab",
+                            Email = "teste@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            Name = "Teste",
+                            NormalizedEmail = "TESTE@GMAIL.COM",
+                            NormalizedUserName = "TESTE@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEpbfL1sGZGAQmfY11et9nzZ5tdMmLv5uVMiv4xXugJLxfksPyB7aJgai6Yym57vFQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "NQY5DMARMJNDQ7CUQJP3U4O7SYXLNANC",
+                            TwoFactorEnabled = false,
+                            UserName = "teste@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("eAgendaMedica.Domain.DoctorModule.Doctor", b =>
@@ -151,6 +232,43 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("TBDoctor", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6f095f41-5503-42a2-8412-8d2bb95c0042"),
+                            CRM = "04474-RS",
+                            Name = "Rafael",
+                            UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
+                        },
+                        new
+                        {
+                            Id = new Guid("1cc3bb32-627c-4e79-9f4a-3fbff06bbbdf"),
+                            CRM = "23456-SC",
+                            Name = "João",
+                            UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
+                        },
+                        new
+                        {
+                            Id = new Guid("6275b95e-03e9-4213-9303-f0745608f706"),
+                            CRM = "82460-SC",
+                            Name = "Rech",
+                            UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
+                        },
+                        new
+                        {
+                            Id = new Guid("c20e745a-da4c-4f8f-9f8f-7d5c74cafb6f"),
+                            CRM = "61458-SC",
+                            Name = "Tiago",
+                            UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
+                        },
+                        new
+                        {
+                            Id = new Guid("ad42d17f-9f8d-4f5b-983e-6ad44906b347"),
+                            CRM = "02457-SP",
+                            Name = "Matheus",
+                            UserId = new Guid("e7944276-5214-46c7-2755-08dbede3db7d")
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -297,6 +415,33 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                     b.HasIndex("DoctorId");
 
                     b.ToTable("TBDoctor_TBActivity");
+
+                    b.HasData(
+                        new
+                        {
+                            ActivityId = new Guid("ed18f0f2-b77f-4334-8afd-f3285372afb5"),
+                            DoctorId = new Guid("6f095f41-5503-42a2-8412-8d2bb95c0042")
+                        },
+                        new
+                        {
+                            ActivityId = new Guid("53c58b57-22a6-4df7-b824-5850b621f694"),
+                            DoctorId = new Guid("1cc3bb32-627c-4e79-9f4a-3fbff06bbbdf")
+                        },
+                        new
+                        {
+                            ActivityId = new Guid("52c39088-1fb2-4b77-a99d-9cce46250435"),
+                            DoctorId = new Guid("6275b95e-03e9-4213-9303-f0745608f706")
+                        },
+                        new
+                        {
+                            ActivityId = new Guid("a0d0323d-88a7-4cfe-ac8d-a022a4a344c1"),
+                            DoctorId = new Guid("c20e745a-da4c-4f8f-9f8f-7d5c74cafb6f")
+                        },
+                        new
+                        {
+                            ActivityId = new Guid("c48c5134-cb2b-4b05-8a4f-3a163068a3c3"),
+                            DoctorId = new Guid("ad42d17f-9f8d-4f5b-983e-6ad44906b347")
+                        });
                 });
 
             modelBuilder.Entity("eAgendaMedica.Domain.ActivityModule.Activity", b =>

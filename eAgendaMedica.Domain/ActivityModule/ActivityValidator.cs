@@ -2,7 +2,7 @@
 
 namespace eAgendaMedica.Domain.ActivityModule
 {
-    public class ActivityValidator : AbstractValidator<Activity>
+    public class ActivityValidator : AbstractValidator<Activity>, IActivityValidator
     {
         public ActivityValidator()
         {
@@ -27,6 +27,7 @@ namespace eAgendaMedica.Domain.ActivityModule
                 .LessThan(a => a.EndTime).WithMessage("A hora de início deve ser antes da hora de término.");
 
             RuleFor(a => a.Doctors)
+                .NotNull().WithMessage("Pelo menos um médico deve estar associado à atividade.")
                 .NotEmpty().WithMessage("Pelo menos um médico deve estar associado à atividade.")
                 .Must(doctors => doctors != null && doctors.Count > 0).WithMessage("Pelo menos um médico deve estar associado à atividade.");
 

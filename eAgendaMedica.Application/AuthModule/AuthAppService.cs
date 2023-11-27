@@ -33,7 +33,7 @@ namespace eAgendaMedica.Application.AuthModule
 
         public async Task<Result<User>> Login(string login, string password)
         {
-            var loginResult = await _signInManager.PasswordSignInAsync(login, password, false, true);
+            var loginResult = await _signInManager.PasswordSignInAsync(login, password, false, false);
 
             var errors = new List<IError>();
 
@@ -41,6 +41,9 @@ namespace eAgendaMedica.Application.AuthModule
                 errors.Add(new Error("O acesso para este usuário foi bloqueado"));
 
             if (loginResult.IsNotAllowed)
+                errors.Add(new Error("O login ou a senha estão incorretas"));
+
+            if (!loginResult.Succeeded)
                 errors.Add(new Error("O login ou a senha estão incorretas"));
 
             if (errors.Count > 0)

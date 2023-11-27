@@ -2,8 +2,6 @@
 using eAgendaMedica.Domain.AuthModule;
 using eAgendaMedica.Domain.DoctorModule;
 using eAgendaMedica.Domain.Shared;
-using eAgendaMedica.Infra.Orm.ActivityModule;
-using eAgendaMedica.Infra.Orm.DoctorModule;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

@@ -99,6 +99,9 @@ namespace eAgendaMedica.Application.DoctorModule
 
         public bool VerifyRelationshipWithActivities(Doctor doctor, List<Activity> activities)
         {
+            if (activities == null)
+                return false;
+
             return activities.Any(a => a.Doctors.Contains(doctor));
         }
     }

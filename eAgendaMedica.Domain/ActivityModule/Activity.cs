@@ -1,5 +1,4 @@
-﻿using eAgendaMedica.Domain.AuthModule;
-using eAgendaMedica.Domain.DoctorModule;
+﻿using eAgendaMedica.Domain.DoctorModule;
 using eAgendaMedica.Domain.Shared;
 
 namespace eAgendaMedica.Domain.ActivityModule
@@ -29,6 +28,17 @@ namespace eAgendaMedica.Domain.ActivityModule
             StartTime = startTime;
             EndTime = endTime;
             Doctors = doctors;
+            Theme = theme;
+        }
+
+        public Activity(string title, TypeActivity type, DateTime startDay, DateTime endDay, TimeSpan startTime, TimeSpan endTime, string theme)
+        {
+            Title = title;
+            Type = type;
+            StartDay = startDay;
+            EndDay = endDay;
+            StartTime = startTime;
+            EndTime = endTime;
             Theme = theme;
         }
 

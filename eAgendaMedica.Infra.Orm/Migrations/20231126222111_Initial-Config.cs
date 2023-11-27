@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -219,6 +220,47 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                         principalTable: "TBDoctor",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { new Guid("e7944276-5214-46c7-2755-08dbede3db7d"), 0, "6f07bdcf-9ff3-43da-9f8b-5e27808f81ab", "teste@gmail.com", true, false, null, "Teste", "TESTE@GMAIL.COM", "TESTE@GMAIL.COM", "AQAAAAIAAYagAAAAEEpbfL1sGZGAQmfY11et9nzZ5tdMmLv5uVMiv4xXugJLxfksPyB7aJgai6Yym57vFQ==", null, false, "NQY5DMARMJNDQ7CUQJP3U4O7SYXLNANC", false, "teste@gmail.com" });
+
+            migrationBuilder.InsertData(
+                table: "TBActivity",
+                columns: new[] { "Id", "EndDay", "EndTime", "StartDay", "StartTime", "Theme", "Title", "Type", "UserId" },
+                values: new object[,]
+                {
+                    { new Guid("52c39088-1fb2-4b77-a99d-9cce46250435"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 12, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 12, 0, 0, 0), "primary", "Exame de Sangue", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("53c58b57-22a6-4df7-b824-5850b621f694"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 0, 0, 0), "primary", "Checkup", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("a0d0323d-88a7-4cfe-ac8d-a022a4a344c1"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 0, 0, 0), "accent", "Cirurgia Cardíaca", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("c48c5134-cb2b-4b05-8a4f-3a163068a3c3"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 11, 0, 0, 0), "warn", "Cirurgia de Emergência", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("ed18f0f2-b77f-4334-8afd-f3285372afb5"), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 10, 30, 0, 0), new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 10, 0, 0, 0), "primary", "Consulta Geral", 1, new Guid("e7944276-5214-46c7-2755-08dbede3db7d") }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TBDoctor",
+                columns: new[] { "Id", "CRM", "Name", "UserId" },
+                values: new object[,]
+                {
+                    { new Guid("1cc3bb32-627c-4e79-9f4a-3fbff06bbbdf"), "23456-SC", "João", new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("6275b95e-03e9-4213-9303-f0745608f706"), "82460-SC", "Rech", new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("6f095f41-5503-42a2-8412-8d2bb95c0042"), "04474-RS", "Rafael", new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("ad42d17f-9f8d-4f5b-983e-6ad44906b347"), "02457-SP", "Matheus", new Guid("e7944276-5214-46c7-2755-08dbede3db7d") },
+                    { new Guid("c20e745a-da4c-4f8f-9f8f-7d5c74cafb6f"), "61458-SC", "Tiago", new Guid("e7944276-5214-46c7-2755-08dbede3db7d") }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TBDoctor_TBActivity",
+                columns: new[] { "ActivityId", "DoctorId" },
+                values: new object[,]
+                {
+                    { new Guid("52c39088-1fb2-4b77-a99d-9cce46250435"), new Guid("6275b95e-03e9-4213-9303-f0745608f706") },
+                    { new Guid("53c58b57-22a6-4df7-b824-5850b621f694"), new Guid("1cc3bb32-627c-4e79-9f4a-3fbff06bbbdf") },
+                    { new Guid("a0d0323d-88a7-4cfe-ac8d-a022a4a344c1"), new Guid("c20e745a-da4c-4f8f-9f8f-7d5c74cafb6f") },
+                    { new Guid("c48c5134-cb2b-4b05-8a4f-3a163068a3c3"), new Guid("ad42d17f-9f8d-4f5b-983e-6ad44906b347") },
+                    { new Guid("ed18f0f2-b77f-4334-8afd-f3285372afb5"), new Guid("6f095f41-5503-42a2-8412-8d2bb95c0042") }
                 });
 
             migrationBuilder.CreateIndex(

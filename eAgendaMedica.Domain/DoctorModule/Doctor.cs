@@ -45,6 +45,9 @@ namespace eAgendaMedica.Domain.DoctorModule
 
         public static List<Doctor> CalculateHoursWorked(List<Doctor> doctors)
         {
+            if (doctors == null)
+                return null;
+
             foreach (var doctor in doctors)
             {
                 foreach (var activity in doctor.Activities)
@@ -63,6 +66,9 @@ namespace eAgendaMedica.Domain.DoctorModule
 
         public static bool CanDoActivity(Activity newActivity)
         {
+            if (newActivity.Doctors == null)
+                return false;
+
             foreach (var doctor in newActivity.Doctors)
             {
                 if (!doctor.HasSufficientRecoveryTime(newActivity))

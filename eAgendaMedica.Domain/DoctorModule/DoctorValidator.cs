@@ -1,10 +1,8 @@
-﻿using eAgendaMedica.Domain.ActivityModule;
-using FluentValidation;
-using System.Text.RegularExpressions;
+﻿using FluentValidation;
 
 namespace eAgendaMedica.Domain.DoctorModule
 {
-    public class DoctorValidator : AbstractValidator<Doctor>
+    public class DoctorValidator : AbstractValidator<Doctor>, IDoctorValidator
     {
         public DoctorValidator()
         {
