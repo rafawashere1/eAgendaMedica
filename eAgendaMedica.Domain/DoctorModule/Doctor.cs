@@ -91,6 +91,7 @@ namespace eAgendaMedica.Domain.DoctorModule
             {
                 foreach (var activity in Activities)
                 {
+
                     if (activity == newActivity)
                     {
                         continue;

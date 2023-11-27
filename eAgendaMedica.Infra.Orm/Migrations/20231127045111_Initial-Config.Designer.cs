@@ -2,9 +2,9 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using eAgendaMedica.Infra.Orm.Shared;
 
 #nullable disable
@@ -12,7 +12,7 @@ using eAgendaMedica.Infra.Orm.Shared;
 namespace eAgendaMedica.Infra.Orm.Migrations
 {
     [DbContext(typeof(eAgendaMedicaDbContext))]
-    [Migration("20231127013437_Initial-Config")]
+    [Migration("20231127045111_Initial-Config")]
     partial class InitialConfig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,40 +20,40 @@ namespace eAgendaMedica.Infra.Orm.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.22")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("eAgendaMedica.Domain.ActivityModule.Activity", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("EndDay")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<TimeSpan>("EndTime")
-                        .HasColumnType("time");
+                        .HasColumnType("interval");
 
                     b.Property<DateTime>("StartDay")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<TimeSpan>("StartTime")
-                        .HasColumnType("time");
+                        .HasColumnType("interval");
 
                     b.Property<string>("Theme")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("Type")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -64,7 +64,7 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0b74e0df-dc5c-4810-8243-1357237c64ad"),
+                            Id = new Guid("aeafd397-2b6a-4e52-8f1f-fb62a1e69cf3"),
                             EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndTime = new TimeSpan(0, 10, 30, 0, 0),
                             StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -76,7 +76,7 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7c82bf9f-a09a-4c70-9489-6a342dc606d9"),
+                            Id = new Guid("7130c4c9-1dd8-4bea-94d0-44520e2b5278"),
                             EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndTime = new TimeSpan(0, 11, 30, 0, 0),
                             StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -88,7 +88,7 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3fadc39c-2710-4600-a204-fb72df9b252f"),
+                            Id = new Guid("c0d74dd3-b8e3-4115-b9be-b4d900e9c990"),
                             EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndTime = new TimeSpan(0, 12, 30, 0, 0),
                             StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -100,7 +100,7 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                         },
                         new
                         {
-                            Id = new Guid("758c8c63-1a18-4db3-b3e4-2b4dec8add6a"),
+                            Id = new Guid("4df543cc-85e1-4bd8-bd11-0af445c5e61f"),
                             EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndTime = new TimeSpan(0, 11, 30, 0, 0),
                             StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -112,7 +112,7 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b07c1564-2d23-49e2-a7da-e7c5a2327b4a"),
+                            Id = new Guid("fc2a6804-5a14-4754-99c9-4d6f878f9ed1"),
                             EndDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EndTime = new TimeSpan(0, 11, 30, 0, 0),
                             StartDay = new DateTime(2023, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -128,58 +128,58 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
 
@@ -188,8 +188,7 @@ namespace eAgendaMedica.Infra.Orm.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
 
@@ -216,18 +215,18 @@ namespace eAgendaMedica.Infra.Orm.Migrations
             modelBuilder.Entity("eAgendaMedica.Domain.DoctorModule.Doctor", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("CRM")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -277,26 +276,25 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
                 });
@@ -305,18 +303,18 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -329,18 +327,18 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -352,16 +350,16 @@ namespace eAgendaMedica.Infra.Orm.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -373,10 +371,10 @@ namespace eAgendaMedica.Infra.Orm.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -388,16 +386,16 @@ namespace eAgendaMedica.Infra.Orm.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -407,10 +405,10 @@ namespace eAgendaMedica.Infra.Orm.Migrations
             modelBuilder.Entity("TBDoctor_TBActivity", b =>
                 {
                     b.Property<Guid>("ActivityId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("DoctorId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("ActivityId", "DoctorId");
 
@@ -421,27 +419,27 @@ namespace eAgendaMedica.Infra.Orm.Migrations
                     b.HasData(
                         new
                         {
-                            ActivityId = new Guid("0b74e0df-dc5c-4810-8243-1357237c64ad"),
+                            ActivityId = new Guid("aeafd397-2b6a-4e52-8f1f-fb62a1e69cf3"),
                             DoctorId = new Guid("6f095f41-5503-42a2-8412-8d2bb95c0042")
                         },
                         new
                         {
-                            ActivityId = new Guid("7c82bf9f-a09a-4c70-9489-6a342dc606d9"),
+                            ActivityId = new Guid("7130c4c9-1dd8-4bea-94d0-44520e2b5278"),
                             DoctorId = new Guid("1cc3bb32-627c-4e79-9f4a-3fbff06bbbdf")
                         },
                         new
                         {
-                            ActivityId = new Guid("3fadc39c-2710-4600-a204-fb72df9b252f"),
+                            ActivityId = new Guid("c0d74dd3-b8e3-4115-b9be-b4d900e9c990"),
                             DoctorId = new Guid("6275b95e-03e9-4213-9303-f0745608f706")
                         },
                         new
                         {
-                            ActivityId = new Guid("758c8c63-1a18-4db3-b3e4-2b4dec8add6a"),
+                            ActivityId = new Guid("4df543cc-85e1-4bd8-bd11-0af445c5e61f"),
                             DoctorId = new Guid("c20e745a-da4c-4f8f-9f8f-7d5c74cafb6f")
                         },
                         new
                         {
-                            ActivityId = new Guid("b07c1564-2d23-49e2-a7da-e7c5a2327b4a"),
+                            ActivityId = new Guid("fc2a6804-5a14-4754-99c9-4d6f878f9ed1"),
                             DoctorId = new Guid("ad42d17f-9f8d-4f5b-983e-6ad44906b347")
                         });
                 });

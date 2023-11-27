@@ -15,9 +15,11 @@ namespace eAgendaMedica.Infra.Orm.Shared
 
             var optionsBuilder = new DbContextOptionsBuilder<eAgendaMedicaDbContext>();
 
-            var connectionString = configuration.GetConnectionString("SqlServer");
+            var connectionString = configuration.GetConnectionString("PostgreSql");
 
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseNpgsql(connectionString);
+
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             return new eAgendaMedicaDbContext(optionsBuilder.Options);
         }

@@ -24,7 +24,7 @@ namespace eAgendaMedica.WebApi.Config.Extensions
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidAudience = "http://localhost",
+                    ValidAudience = "https://e-agenda-medica-api-dadz.onrender.com",
                     ValidIssuer = "eAgendaMedica"
                 };
             });

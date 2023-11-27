@@ -40,7 +40,7 @@ namespace eAgendaMedica.WebApi.Config.Extensions
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
             {
                 Issuer = "eAgendaMedica",
-                Audience = "http://localhost",
+                Audience = "https://e-agenda-medica-api-dadz.onrender.com",
                 Subject = GetIdentityClaims(user),
                 Expires = expirationDate,
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secret), SecurityAlgorithms.HmacSha256Signature)

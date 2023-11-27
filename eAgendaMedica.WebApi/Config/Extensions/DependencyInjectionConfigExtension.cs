@@ -15,11 +15,11 @@ namespace eAgendaMedica.WebApi.Config.Extensions
     {
         public static void ConfigureDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("SqlServer");
+            var connectionString = configuration.GetConnectionString("PostgreSql");
 
             services.AddDbContext<IPersistenceContext, eAgendaMedicaDbContext>(optionsBulder =>
             {
-                optionsBulder.UseSqlServer(connectionString);
+                optionsBulder.UseNpgsql(connectionString);
             });
 
             services.AddTransient<ITenantProvider, TenantProvider>();

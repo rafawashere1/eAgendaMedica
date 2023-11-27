@@ -20,10 +20,12 @@ namespace eAgendaMedica.Infra.Orm.ActivityModule
                 .IsRequired();
 
             builder.Property(x => x.StartDay)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("timestamptz");
 
             builder.Property(x => x.EndDay)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("timestamptz");
 
             builder.Property(x => x.StartTime)
                 .IsRequired();

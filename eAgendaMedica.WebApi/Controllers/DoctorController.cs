@@ -128,12 +128,9 @@ namespace eAgendaMedica.WebApi.Controllers
 
             if (doctorResult.IsFailed)
                 if (doctorResult.Errors[0].Message.Contains("não encontrado"))
-                {
                     return NotFound(doctorResult.Errors);
-                }
-            else if (doctorResult.Errors[0].Message.Contains("atividade agendada.")) {
+            else if (doctorResult.Errors[0].Message.Contains("atividade agendada."))
                 return BadRequest(doctorResult.Errors);
-            }
             else
                 return BadRequest();
 
