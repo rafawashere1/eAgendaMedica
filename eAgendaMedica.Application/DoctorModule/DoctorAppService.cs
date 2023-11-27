@@ -53,7 +53,7 @@ namespace eAgendaMedica.Application.DoctorModule
             if (doctor == null)
                 return Result.Fail($"Médico {id} não encontrado");
 
-            if (VerifyRelationshipWithActivities(doctor, _activityRepository.GetAll()))
+            if (VerifyRelationshipWithActivities(doctor, doctor.Activities))
                 return Result.Fail($"Médico {doctor.Name} está com uma atividade agendada.");
 
             _doctorRepository.Remove(doctor);

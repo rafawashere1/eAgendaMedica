@@ -127,7 +127,15 @@ namespace eAgendaMedica.WebApi.Controllers
             var doctorResult = await _doctorService.RemoveAsync(id);
 
             if (doctorResult.IsFailed)
-                return NotFound(doctorResult.Errors);
+                if (doctorResult.Errors[0].Message.Contains("não encontrado"))
+                {
+                    return NotFound(doctorResult.Errors);
+                }
+            else if (doctorResult.Errors[0].Message.Contains("atividade agendada.")) {
+                return BadRequest(doctorResult.Errors);
+            }
+            else
+                return BadRequest();
 
             return Ok();
         }
